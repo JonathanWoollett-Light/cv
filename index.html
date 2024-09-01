@@ -22,6 +22,7 @@
     <title>Jonathan Woollett-Light</title>
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <style>
+      /* Hide specific items when printing */
       @media print {
         .no-print,
         .no-print * {
@@ -312,7 +313,7 @@
             </p>
           </div>
         </div>
-        <div class="col hide-on-small-only m3 l2 pinned no-print">
+        <div class="hide-on-small-only pinned no-print">
           <ul class="section table-of-contents">
             <li><a href="#programming_experience">Programming</a></li>
             <li><a href="#work_experience">Work</a></li>
@@ -321,6 +322,14 @@
           <button class="btn outlined" onClick="window.print()">
             Save as PDF
           </button>
+          <div style="width: 130px; padding-top: 20px">
+            <select id="theme-select">
+              <option id="light-option" value="light">Light</option>
+              <option id="dark-option" value="dark">Dark</option>
+              <option id="device-option" value="device">Device</option>
+            </select>
+            <label for="theme-select">Theme</label>
+          </div>
         </div>
       </div>
     </div>
@@ -328,10 +337,48 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/js/materialize.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll(".scrollspy");
-        var instances = M.ScrollSpy.init(elems, {});
+      // Initialize scrollspy.
+      M.ScrollSpy.init(document.querySelectorAll(".scrollspy"), {});
+
+      // Set initial theme based on local storage.
+      const switchElem = document.querySelector("#theme-select");
+      const currentTheme = localStorage.getItem("theme");
+      if (currentTheme) {
+        let set = currentTheme == "dark";
+        if (set) {
+          document.documentElement.setAttribute("theme", "dark");
+          localStorage.setItem("theme", "dark");
+          switchElem.value = "dark";
+        } else {
+          document.documentElement.setAttribute("theme", "light");
+          localStorage.setItem("theme", "light");
+          switchElem.value = "light";
+        }
+      } else {
+        switchElem.value = "device";
+      }
+
+      // Initialize theme select.
+      M.FormSelect.init(document.querySelectorAll("select"), {});
+
+      // Set event on switch.
+      switchElem.addEventListener("change", () => {
+        console.log("hit this");
+        if (switchElem.value == "dark") {
+          document.documentElement.setAttribute("theme", "dark");
+          localStorage.setItem("theme", "dark");
+        } else if (switchElem.value == "light") {
+          document.documentElement.setAttribute("theme", "light");
+          localStorage.setItem("theme", "light");
+        } else if (switchElem.value == "device") {
+          document.documentElement.removeAttribute("theme");
+          localStorage.removeItem("theme");
+        } else {
+          console.error("unreachable");
+        }
       });
+
+      // Printing logic
       window.addEventListener("beforeprint", (event) => {
         document.getElementById("main").classList = "col s12";
       });

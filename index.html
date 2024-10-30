@@ -12,7 +12,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/css/materialize.min.css"
     />
-    
+
     <!-- Font awesome icons -->
     <script
       src="https://kit.fontawesome.com/1f14b3aedb.js"
@@ -40,7 +40,6 @@
       <div class="row">
         <div id="main" class="col s12 m9 l10 offset-m3 offset-l2">
           <h3>Jonathan Woollett-Light</h3>
-
           <p>
             <i class="fa-solid fa-location-dot"></i
             ><a href="https://maps.app.goo.gl/epiRn7Y88kgLSxiAA">
@@ -67,28 +66,110 @@
               A little more than an introduction to</a
             >
           </p>
+          <p>
+            I am a software engineer with a specific interest in low level
+            systems and tooling. I am a frequent Open-Source contributor having
+            contributed to ziglang, rustlang and popular Rust crates. I have a
+            small educational YouTube channel where I very infrequently post
+            videos about technical topics I find interesting (<a
+              href="https://www.youtube.com/@alittlemorethananintroduct1604"
+              >A little more than an introduction to - YouTube</a
+            >).
+          </p>
+          <div id="work_experience" class="section scrollspy">
+            <h4>Work experience</h4>
+            <h5><a href="https://aws.amazon.com/">Amazon Web Services</a></h5>
+            <strong
+              ><a href="https://maps.app.goo.gl/Drok6UA7W5empdoY6">Cambrigde</a>
+              - Software development engineer</strong
+            >
+            <p>
+              I worked on Firecracker, a memory efficient, fast booting VMM that
+              allows AWS lambda to be profitable.
+              <br /><br />
+              Firecracker supports snapshotting a VM; a VM can be saved and
+              restored much faster than booting a new one and much faster than
+              any other VMM. I spent time working on the safety and
+              configurability of this feature, this involved evaluating whether
+              a snapshot could be safely restored on a given CPU considering its
+              specified features and security mitigations, and those of the
+              target. This involved analysis of the performance and security
+              effects of CPU features on both x86-64 and aarch64, and ensuring
+              we had an implementation that aligned with the specifications.
+              <br /><br />
+              Firecracker supports a feature called CPU templates that allows a
+              user configurability of most of how the CPU is presented to the
+              guest OS. This work required understanding the Intel x86-64, AMD
+              x86-64 and Arm aarch64 specifications. Development involved
+              thorough discussion with customers and within our team both
+              focused on usability, security and robustness. I rewrote how
+              Firecracker handles static CPU templates to support runtime CPU
+              templates and wrote the foundational implementation for runtime
+              CPU templates. I also implemented thorough compatibility checks
+              for x86-64.
+              <br /><br />
+              I was the owner of an initiative to performance test Firecracker
+              in production-like scenarios, through this we discovered and fixed
+              significant performance regressions that may have costed AWS
+              Lambda millions of dollars if they went live. This work involved
+              coordinating across teams and diving deep into the deployment and
+              management of resources to setup the required environment and
+              execute the useful tests.
+              <br /><br />
+              In this role I and another team member adopted responsibility for
+              maintenance of the
+              <a href="https://github.com/rust-vmm">rust-vmm</a> open source
+              organization that maintained components used by Firecracker and
+              other VMMs such as
+              <a href="https://github.com/cloud-hypervisor/cloud-hypervisor"
+                >cloud-hypervisor</a
+              >.
+            </p>
+            <h5><a href="https://www.renishaw.com/">Renishaw</a></h5>
+            <strong
+              ><a href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
+                >Wotton-under-Edge</a
+              >
+              - Software placement</strong
+            >
+            <p>
+              I worked on building C++ components forming an internal standard
+              library. This involved extensive testing and performance
+              consideration.
+            </p>
+            <h5><a href="https://www.renishaw.com/">Renishaw</a></h5>
+            <strong
+              ><a href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
+                >Wotton-under-Edge</a
+              >
+              - Work experience</strong
+            >
+            <p>
+              My work experience focused on development with FPGAs and VHDL.
+            </p>
+          </div>
           <div id="programming_experience" class="section scrollspy">
             <h4>Programming experience</h4>
             <p>
               I am an expert in Rust, I am experienced in C++, C and Python, and
               I am familiar with Zig, Ada, aarch64 asm, RISC-V asm, JavaScript
-              and CSS3+HTML5. I am a frequent Open-Source contributor having
-              contributed to ziglang, rustlang and popular Rust crates. I have a
-              small educational YouTube channel where I very infrequently post
-              videos about technical topics I find interesting (A little more
-              than an introduction to - YouTube).
+              and CSS3+HTML5.
             </p>
             <img
+              class="no-print"
               height="160"
               alt="Code written on GitHub by language"
               src="https://github-readme-stats.vercel.app/api/top-langs/?username=JonathanWoollett-Light&layout=compact&langs_count=10&exclude_repo=CSC327-A2&theme=transparent&hide_title=true&hide=html,css,scss,ejs,jupyter%20notebook"
             />
             <img
+              class="no-print"
               height="160"
               alt="GitHub contribution statistics"
               src="https://github-readme-stats.vercel.app/api?username=JonathanWoollett-Light&hide_rank=true&theme=transparent&show_icons=true&hide_title=true"
             />
-            <h5><a href="https://github.com/ci-metrics/example">CI Metrics</a></h5>
+            <h5>
+              <a href="https://github.com/ci-metrics/example">CI Metrics</a>
+            </h5>
             <strong
               >November 2023 - Current, Rust JavaScript, & HTML+CSS</strong
             >
@@ -208,78 +289,6 @@
               A simple tree search program to play draughts using a genetic
               algorithm to judge board positions. My first ever venture into
               optimisation, I still remember the moment it beat me.
-            </p>
-          </div>
-          <div id="work_experience" class="section scrollspy">
-            <h4>Work experience</h4>
-            <h5><a href="https://aws.amazon.com/">Amazon Web Services</a></h5>
-            <strong
-              ><a href="https://maps.app.goo.gl/Drok6UA7W5empdoY6">Cambrigde</a>
-              - Software development engineer</strong
-            >
-            <p>
-              I worked on Firecracker, a memory efficient, fast booting VMM that
-              allows AWS lambda to be profitable.
-              <br /><br />
-              Firecracker supports snapshotting a VM; a VM can be saved and
-              restored much faster than booting a new one and much faster than
-              any other VMM. I spent time working on the safety and
-              configurability of this feature, this involved evaluating whether
-              a snapshot could be safely restored on a given CPU considering its
-              specified features and security mitigations, and those of the
-              target. This involved analysis of the performance and security
-              effects of CPU features on both x86-64 and aarch64, and ensuring
-              we had an implementation that aligned with the specifications.
-              <br /><br />
-              Firecracker supports a feature called CPU templates that allows a
-              user configurability of most of how the CPU is presented to the
-              guest OS. This work required understanding the Intel x86-64, AMD
-              x86-64 and Arm aarch64 specifications. Development involved
-              thorough discussion with customers and within our team both
-              focused on usability, security and robustness. I rewrote how
-              Firecracker handles static CPU templates to support runtime CPU
-              templates and wrote the foundational implementation for runtime
-              CPU templates. I also implemented thorough compatibility checks
-              for x86-64.
-              <br /><br />
-              I was the owner of an initiative to performance test Firecracker
-              in production-like scenarios, through this we discovered and fixed
-              significant performance regressions that may have costed AWS
-              Lambda millions of dollars if they went live. This work involved
-              coordinating across teams and diving deep into the deployment and
-              management of resources to setup the required environment and
-              execute the useful tests.
-              <br /><br />
-              In this role I and another team member adopted responsibility for
-              maintenance of the
-              <a href="https://github.com/rust-vmm">rust-vmm</a> open source
-              organization that maintained components used by Firecracker and
-              other VMMs such as
-              <a href="https://github.com/cloud-hypervisor/cloud-hypervisor"
-                >cloud-hypervisor</a
-              >.
-            </p>
-            <h5><a href="https://www.renishaw.com/">Renishaw</a></h5>
-            <strong
-              ><a href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
-                >Wotton-under-Edge</a
-              >
-              - Software placement</strong
-            >
-            <p>
-              I worked on building C++ components forming an internal standard
-              library. This involved extensive testing and performance
-              consideration.
-            </p>
-            <h5><a href="https://www.renishaw.com/">Renishaw</a></h5>
-            <strong
-              ><a href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
-                >Wotton-under-Edge</a
-              >
-              - Work experience</strong
-            >
-            <p>
-              My work experience focused on development with FPGAs and VHDL.
             </p>
           </div>
           <div id="education" class="section scrollspy">

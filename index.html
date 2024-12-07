@@ -26,11 +26,16 @@
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
 
     <style>
-      /* Hide specific items when printing */
+      
       @media print {
+        /* Hide specific items when printing */
         .no-print,
         .no-print * {
           display: none !important;
+        }
+        /* Remove a tag coloring when printing */
+        a {
+          color: inherit;
         }
       }
     </style>

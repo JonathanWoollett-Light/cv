@@ -49,6 +49,18 @@
         a {
           color: inherit;
         }
+        h3 {
+          font-size: 30px;
+        }
+        h4 {
+          font-size: 22px;
+        }
+        h5 {
+          font-size: 16px;
+        }
+        strong, p {
+          font-size: 12px;
+        }
       }
     </style>
   </head>
@@ -418,10 +430,21 @@
       // Printing logic
       window.addEventListener("beforeprint", (event) => {
         document.getElementById("main").classList = "col s12";
+        document.documentElement.setAttribute("theme", "light");
       });
       window.addEventListener("afterprint", (event) => {
         document.getElementById("main").classList =
           "col s8 m9 l10 offset-m3 offset-l2 print";
+        switch (localStorage.getItem("theme")) {
+          case "dark":
+            document.documentElement.setAttribute("theme", "dark");
+            break;
+          case "light":
+            document.documentElement.setAttribute("theme", "light");
+            break;
+          default:
+            document.documentElement.removeAttribute("theme");
+        }
       });
     </script>
   </body>

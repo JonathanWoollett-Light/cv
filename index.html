@@ -542,9 +542,13 @@
         padding-top: 10px;
         padding-bottom: 10px;
       }
-      a {
+      .lite-link {
         color: var(--md-sys-color-tertiary, #0000ee);
         text-decoration: none;
+        cursor: pointer;
+      }
+      .lite-link:hover {
+        color: var(--md-sys-color-primary);
       }
       .my-container {
         margin: 0 auto;
@@ -639,8 +643,11 @@
           <div id="contacts">
             <p>
               <i class="fa-solid fa-location-dot"></i
-              ><a href="https://maps.app.goo.gl/oDdj9ePiVdvEPtDs8">
-                15 Claremont Terrace, York YO31 7EJ</a
+              ><span
+                class="lite-link"
+                href="https://maps.app.goo.gl/oDdj9ePiVdvEPtDs8"
+              >
+                15 Claremont Terrace, York YO31 7EJ</span
               >
             </p>
             <p><i class="fa-solid fa-phone"></i> +44 7941 079483</p>
@@ -650,22 +657,29 @@
             </p>
             <p>
               <i class="fa-brands fa-github"></i
-              ><a href="https://github.com/JonathanWoollett-Light">
-                JonathanWoollett-Light</a
+              ><span
+                class="lite-link"
+                href="https://github.com/JonathanWoollett-Light"
+              >
+                JonathanWoollett-Light</span
               >
             </p>
             <p>
               <i class="fa-brands fa-linkedin"></i
-              ><a href="https://www.linkedin.com/in/jonathan-wl/">
-                jonathan-wl</a
+              ><span
+                class="lite-link"
+                href="https://www.linkedin.com/in/jonathan-wl/"
+              >
+                jonathan-wl</span
               >
             </p>
             <p>
               <i class="fa-brands fa-youtube"></i
-              ><a
+              ><span
+                class="lite-link"
                 href="https://www.youtube.com/@alittlemorethananintroduct1604"
               >
-                A little more than an introduction to</a
+                A little more than an introduction to</span
               >
             </p>
           </div>
@@ -680,16 +694,25 @@
             Open-Source contributor having contributed to ziglang, rustlang and
             popular Rust crates. I have a small educational YouTube channel
             where I very infrequently post videos about technical topics I find
-            interesting (<a
+            interesting (<span
+              class="lite-link"
               href="https://www.youtube.com/@alittlemorethananintroduct1604"
-              >A little more than an introduction to - YouTube</a
+              >A little more than an introduction to - YouTube</span
             >).
           </p>
           <div id="work_experience">
             <h4>Work experience</h4>
-            <h5><a href="https://aws.amazon.com/">Amazon Web Services</a></h5>
+            <h5>
+              <span class="lite-link" href="https://aws.amazon.com/"
+                >Amazon Web Services</span
+              >
+            </h5>
             <strong
-              ><a href="https://maps.app.goo.gl/Drok6UA7W5empdoY6">Cambrigde</a>
+              ><span
+                class="lite-link"
+                href="https://maps.app.goo.gl/Drok6UA7W5empdoY6"
+                >Cambrigde</span
+              >
               - Software development engineer</strong
             >
             <p>
@@ -727,17 +750,27 @@
               <br /><br />
               In this role I and another team member adopted responsibility for
               maintenance of the
-              <a href="https://github.com/rust-vmm">rust-vmm</a> open source
-              organization that maintained components used by Firecracker and
-              other VMMs such as
-              <a href="https://github.com/cloud-hypervisor/cloud-hypervisor"
-                >cloud-hypervisor</a
+              <span class="lite-link" href="https://github.com/rust-vmm"
+                >rust-vmm</span
+              >
+              open source organization that maintained components used by
+              Firecracker and other VMMs such as
+              <span
+                class="lite-link"
+                href="https://github.com/cloud-hypervisor/cloud-hypervisor"
+                >cloud-hypervisor</span
               >.
             </p>
-            <h5><a href="https://www.renishaw.com/">Renishaw</a></h5>
+            <h5>
+              <span class="lite-link" href="https://www.renishaw.com/"
+                >Renishaw</span
+              >
+            </h5>
             <strong
-              ><a href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
-                >Wotton-under-Edge</a
+              ><span
+                class="lite-link"
+                href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
+                >Wotton-under-Edge</span
               >
               - Software placement</strong
             >
@@ -746,10 +779,16 @@
               library. This involved extensive testing and performance
               consideration.
             </p>
-            <h5><a href="https://www.renishaw.com/">Renishaw</a></h5>
+            <h5>
+              <span class="lite-link" href="https://www.renishaw.com/"
+                >Renishaw</span
+              >
+            </h5>
             <strong
-              ><a href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
-                >Wotton-under-Edge</a
+              ><span
+                class="lite-link"
+                href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
+                >Wotton-under-Edge</span
               >
               - Work experience</strong
             >
@@ -759,22 +798,30 @@
           </div>
           <div id="education">
             <h4>Education</h4>
-            <h5><a href="https://www.york.ac.uk/">York University</a></h5>
+            <h5>
+              <span class="lite-link" href="https://www.york.ac.uk/"
+                >York University</span
+              >
+            </h5>
             <strong>PhD in Physics</strong>
             <p>
               I am currently undertaking a PhD in Physics at the University of
               York with the research topic of 'Neuromorphic Computing for
               Resource-Efficient Autonomous Systems'.
             </p>
-            <h5><a href="https://www.swansea.ac.uk/">Swansea University</a></h5>
+            <h5>
+              <span class="lite-link" href="https://www.swansea.ac.uk/"
+                >Swansea University</span
+              >
+            </h5>
             <strong>MEng Computing & Bachelors 2.1</strong>
             <p>
               I competed with the university Taekwondo society, at times
               internationally.
             </p>
             <h5>
-              <a href="https://www.bhasvic.ac.uk/"
-                >Brighton and Hove Sixth Form College</a
+              <span class="lite-link" href="https://www.bhasvic.ac.uk/"
+                >Brighton and Hove Sixth Form College</span
               >
             </h5>
             <strong
@@ -787,9 +834,10 @@
               Intelligence) likely within the next 80 years?'.
             </p>
             <h5>
-              <a
+              <span
+                class="lite-link"
                 href="https://en.wikipedia.org/wiki/St_Andrew%27s_High_School,_Worthing"
-                >St Andrew's High School</a
+                >St Andrew's High School</span
               >
             </h5>
             <strong>GCSEs 11 A*-C including mathematics and english</strong>
@@ -832,8 +880,10 @@
               tinder-like dating app.
             </p>
             <h5>
-              <a href="https://jonathanwoollett-light.github.io/language/"
-                >My programming language</a
+              <span
+                class="lite-link"
+                href="https://jonathanwoollett-light.github.io/language/"
+                >My programming language</span
               >
             </h5>
             <p><strong>August 2023 - Current, Rust & Assembly</strong></p>
@@ -844,7 +894,11 @@
               any generics/templates.
             </p>
             <h5>
-              <a href="https://github.com/ci-metrics/example">CI Metrics</a>
+              <span
+                class="lite-link"
+                href="https://github.com/ci-metrics/example"
+                >CI Metrics</span
+              >
             </h5>
             <strong
               >November 2023 - April 2025, Rust, JavaScript & HTML+CSS</strong
@@ -852,17 +906,23 @@
             <p>
               A product to track performance metrics (also known as continuous
               benchmarking) and integrate with GitHub. A
-              <a href="https://github.com/tokio-rs/axum">Axum</a> backend with a
-              MongoDB database. Development focussed on experimentation with
-              algorithms for anomaly detection to produce a solution that
-              accomplishes what
-              <a href="https://aws.amazon.com/lookout-for-metrics/"
-                >AWS Lookout for Metrics</a
+              <span class="lite-link" href="https://github.com/tokio-rs/axum"
+                >Axum</span
+              >
+              backend with a MongoDB database. Development focussed on
+              experimentation with algorithms for anomaly detection to produce a
+              solution that accomplishes what
+              <span
+                class="lite-link"
+                href="https://aws.amazon.com/lookout-for-metrics/"
+                >AWS Lookout for Metrics</span
               >
               does, but at a much lower cost and complexity. This was motivated
               by my experience working on
-              <a href="https://github.com/firecracker-microvm/firecracker"
-                >Firecracker</a
+              <span
+                class="lite-link"
+                href="https://github.com/firecracker-microvm/firecracker"
+                >Firecracker</span
               >
               at AWS where regressions that could have cost millions in
               production were almost missed, and certainly some were.
@@ -878,8 +938,10 @@
               new functions.
             </p>
             <h5>
-              <a href="https://github.com/JonathanWoollett-Light/rust-ad"
-                >RUST-AD</a
+              <span
+                class="lite-link"
+                href="https://github.com/JonathanWoollett-Light/rust-ad"
+                >RUST-AD</span
               >
             </h5>
             <p><strong>December 2021 - January 2022, Rust</strong></p>
@@ -907,8 +969,10 @@
             </p>
 
             <h5>
-              <a href="https://github.com/JonathanWoollett-Light/GLSL-BLAS"
-                >GLSL BLAS</a
+              <span
+                class="lite-link"
+                href="https://github.com/JonathanWoollett-Light/GLSL-BLAS"
+                >GLSL BLAS</span
               >
             </h5>
             <p><strong>September 2020 - April 2021, GLSL & C++</strong></p>
@@ -919,8 +983,10 @@
               correct as possible.
             </p>
             <h5>
-              <a href="https://jonathanwoollett-light.github.io/BLAS/"
-                >BLAS website</a
+              <span
+                class="lite-link"
+                href="https://jonathanwoollett-light.github.io/BLAS/"
+                >BLAS website</span
               >
             </h5>
             <p>
@@ -932,12 +998,17 @@
             <p>
               A website documenting BLAS operations. While working on GLSL BLAS
               I found
-              <a href="https://www.netlib.org/blas/">the older website</a> used
-              to document BLAS to be a little uncomfortable, so I made this.
+              <span class="lite-link" href="https://www.netlib.org/blas/"
+                >the older website</span
+              >
+              used to document BLAS to be a little uncomfortable, so I made
+              this.
             </p>
             <h5>
-              <a href="https://github.com/JonathanWoollett-Light/cogent"
-                >Cogent</a
+              <span
+                class="lite-link"
+                href="https://github.com/JonathanWoollett-Light/cogent"
+                >Cogent</span
               >
             </h5>
             <p><strong>September 2019 - March 2021, Rust</strong></p>
@@ -1024,6 +1095,18 @@
             document.documentElement.removeAttribute("theme");
         }
       });
+
+      // Set custom links.
+      // Since all these links are optional and external, I don't believe they
+      // need be so in contrast with the basic text and doing so would in fact
+      // negatively affect readability. Thus considering this to mitigate
+      // accessibility concerns about required links, these links are custom.
+      const liteLinks = document.getElementsByClassName("lite-link");
+      for (let i = 0; i < liteLinks.length; i++) {
+        liteLinks[i].addEventListener("click", (event) => {
+          window.location.href = event.target.getAttribute("href");
+        });
+      }
     </script>
   </body>
 </html>

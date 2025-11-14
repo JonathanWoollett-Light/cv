@@ -521,22 +521,33 @@
         font-size: 2.92rem;
         line-height: 110%;
         margin: 1.9466666667rem 0 1.168rem 0;
+        font-weight: 500;
       }
       h4 {
         font-size: 2.28rem;
         line-height: 110%;
         margin: 1.52rem 0 0.912rem 0;
+        font-weight: 500;
       }
       h5 {
         font-size: 1.64rem;
         line-height: 110%;
         margin: 1.0933333333rem 0 0.656rem 0;
+        font-weight: 500;
       }
       h4,
       h5,
       p {
-        margin-top: 6px;
-        margin-bottom: 6px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      #programming_experience h5 {
+        margin-top: 2px;
+        margin-bottom: 2px;
+        font-size: 1.5rem;
+      }
+      strong {
+        font-weight: 500;
       }
       section {
         padding-top: 10px;
@@ -557,6 +568,15 @@
       }
       select {
         height: 23px;
+      }
+      .project-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .project-header :nth-child(2) {
+        opacity: 0.7;
       }
       @media only screen and (min-width: 993px) {
         .my-container {
@@ -611,16 +631,27 @@
           color: inherit;
         }
         h3 {
+          /* margin-top: 2px !important; */
+          /* margin-bottom: 2px !important; */
           font-size: 30px;
         }
         h4 {
+          /* margin-top: 2px !important; */
+          /* margin-bottom: 2px !important; */
           font-size: 22px;
         }
         h5 {
           font-size: 16px;
         }
+        #programming_experience h5 {
+          margin-top: 2px;
+          margin-bottom: 2px;
+          font-size: 16px;
+        }
         strong,
         p {
+          margin-top: 3px;
+          margin-bottom: 3px;
           font-size: 12px;
         }
         #main {
@@ -643,7 +674,7 @@
       }
     </style>
   </head>
-  <body>
+  <body role="main">
     <div class="my-container">
       <div class="my-row">
         <div id="main">
@@ -779,11 +810,14 @@
           </p>
           <div id="work_experience">
             <h4>Work experience</h4>
-            <h5>
-              <span class="lite-link" href="https://aws.amazon.com/"
-                >Amazon Web Services</span
-              >
-            </h5>
+            <div class="project-header">
+              <h5>
+                <span class="lite-link" href="https://aws.amazon.com/"
+                  >Amazon Web Services</span
+                >
+              </h5>
+              <p>April 2022 - June 2024</p>
+            </div>
             <strong
               ><span
                 class="lite-link"
@@ -838,11 +872,14 @@
                 >cloud-hypervisor</span
               >.
             </p>
-            <h5>
-              <span class="lite-link" href="https://www.renishaw.com/"
-                >Renishaw</span
-              >
-            </h5>
+            <div class="project-header">
+              <h5>
+                <span class="lite-link" href="https://www.renishaw.com/"
+                  >Renishaw</span
+                >
+              </h5>
+              <p>July 2018 - September 2018</p>
+            </div>
             <strong
               ><span
                 class="lite-link"
@@ -856,11 +893,14 @@
               library. This involved extensive testing and performance
               consideration.
             </p>
-            <h5>
-              <span class="lite-link" href="https://www.renishaw.com/"
-                >Renishaw</span
-              >
-            </h5>
+            <div class="project-header">
+              <h5>
+                <span class="lite-link" href="https://www.renishaw.com/"
+                  >Renishaw</span
+                >
+              </h5>
+              <p>A few weeks in 2016</p>
+            </div>
             <strong
               ><span
                 class="lite-link"
@@ -933,17 +973,35 @@
             <img
               class="no-print"
               height="160"
+              width="260"
               alt="Code written on GitHub by language"
               src="https://github-readme-stats.vercel.app/api/top-langs/?username=JonathanWoollett-Light&layout=compact&langs_count=10&exclude_repo=CSC327-A2&theme=transparent&hide_title=true&hide=html,css,scss,ejs,jupyter%20notebook"
             />
             <img
               class="no-print"
               height="160"
+              width="400"
               alt="GitHub contribution statistics"
               src="https://github-readme-stats.vercel.app/api?username=JonathanWoollett-Light&hide_rank=true&theme=transparent&show_icons=true&hide_title=true"
             />
-            <h5>Dating app</h5>
-            <strong>2024 - Current, Rust, Python, JavaScript, SQL</strong>
+            <div class="project-header">
+              <h5>This website</h5>
+              <p>2024 - Current</p>
+            </div>
+            <p>
+              A simple website serving the latest version of my curriculum
+              vitae.
+              <span
+                class="lite-link"
+                href="https://pagespeed.web.dev/analysis/https-jonathanwoollett-light-github-io-cv/0rploc1lkj?form_factor=mobile"
+                >A perfect Google Lighthouse score</span
+              >, light and dark mode support, minimalist styling, and neatly
+              prints to PDF.
+            </p>
+            <div class="project-header">
+              <h5>Dating app</h5>
+              <p>2024 - Current</p>
+            </div>
             <p>
               A dating app that learns user specific traits and preferences to
               optimally match pairs. Applying ML with PyTorch to train models
@@ -951,37 +1009,43 @@
               from swipe data supports matching users based on learned user
               specific features (e.g. matching users based on presentation of
               religious clothing). The server functions as an efficient monolith
-              capable of handling all requests on a single server with in-memory
-              stores and a local SQL store, achieving near 100% system
-              utilisation; supporting all the functionality of a typical
-              tinder-like dating app.
-            </p>
-            <h5>
-              <span
-                class="lite-link"
-                href="https://jonathanwoollett-light.github.io/formal/"
-                >My programming language</span
+              capable of handling all requests on a single Rust
+              <span class="lite-link" href="https://github.com/tokio-rs/axum"
+                >Axum</span
               >
-            </h5>
-            <p><strong>August 2023 - Current, Rust & Assembly</strong></p>
+              server with in-memory stores and a local SQL store, achieving near
+              100% system utilisation; supporting all the functionality of a
+              typical tinder-like dating app.
+            </p>
+            <div class="project-header">
+              <h5>
+                <span
+                  class="lite-link"
+                  href="https://jonathanwoollett-light.github.io/formal/"
+                  >My programming language</span
+                >
+              </h5>
+              <p>August 2023 - Current</p>
+            </div>
             <p>
               A procedural programming language with extensive formal
               verification, infallible type inference and next-gen compile-time
-              evaluation.
+              evaluation. The compiler is written in Rust and compiles to
+              RISC-V.
             </p>
-            <h5>
-              <span
-                class="lite-link"
-                href="https://github.com/ci-metrics/example"
-                >CI Metrics</span
-              >
-            </h5>
-            <strong
-              >November 2023 - April 2025, Rust, JavaScript & HTML+CSS</strong
-            >
+            <div class="project-header">
+              <h5>
+                <span
+                  class="lite-link"
+                  href="https://github.com/ci-metrics/example"
+                  >CI Metrics</span
+                >
+              </h5>
+              <p>November 2023 - April 2025</p>
+            </div>
             <p>
               A website to track performance metrics (continuous benchmarking)
-              and integrate with GitHub. A
+              and integrate with GitHub. A Rust
               <span class="lite-link" href="https://github.com/tokio-rs/axum"
                 >Axum</span
               >
@@ -1003,66 +1067,69 @@
               at AWS where regressions that could have cost millions in
               production were almost missed, and certainly some were.
             </p>
-            <h5>Live migration web server</h5>
-            <p><strong>February 2023 - Current, Rust</strong></p>
+            <div class="project-header">
+              <h5>Live migration web server</h5>
+              <p>February 2023 - November 2023</p>
+            </div>
             <p>
-              A server framework where a new server process can succeed a local
-              old process in milliseconds with shared memory (or remotely in
-              seconds over TCP) without dropping client streams. This can be
+              A Rust server framework where a new server process can succeed a
+              local old process in milliseconds with shared memory (or remotely
+              in seconds over TCP) without dropping client streams. This can be
               used as a database server with in-memory data storage akin to
               Redis where queries are compiled as new functions.
             </p>
-            <h5>
-              <span
-                class="lite-link"
-                href="https://github.com/JonathanWoollett-Light/rust-ad"
-                >RUST-AD</span
-              >
-            </h5>
-            <p><strong>December 2021 - January 2022, Rust</strong></p>
+            <div class="project-header">
+              <h5>
+                <span
+                  class="lite-link"
+                  href="https://github.com/JonathanWoollett-Light/rust-ad"
+                  >RUST-AD</span
+                >
+              </h5>
+              <p>December 2021 - January 2022</p>
+            </div>
             <p>
               Auto-differentiation library with code transformation for both
-              forward and reverse auto-diff.
+              forward and reverse auto-diff written in Rust.
             </p>
-            <h5>Mathematics Site</h5>
+            <div class="project-header">
+              <h5>Mathematics Site</h5>
+              <p>April 2021 - June 2022</p>
+            </div>
             <p>
-              <strong
-                >April 2021 - June 2022, Rust, Python, JavaScript &
-                HTML+CSS</strong
+              A mathematics website for automated marking. Built with a Rust
+              <span class="lite-link" href="https://github.com/actix/actix-web"
+                >Actix</span
               >
-            </p>
-            <p>
-              A mathematics website for automated marking. Built with an Actix
               backend using a PyTorch semantic segmentation model, deployed with
               AWS, with a MongoDB database.
             </p>
 
-            <h5>
-              <span
-                class="lite-link"
-                href="https://github.com/JonathanWoollett-Light/GLSL-BLAS"
-                >GLSL BLAS</span
-              >
-            </h5>
-            <p><strong>September 2020 - April 2021, GLSL & C++</strong></p>
+            <div class="project-header">
+              <h5>
+                <span
+                  class="lite-link"
+                  href="https://github.com/JonathanWoollett-Light/GLSL-BLAS"
+                  >GLSL BLAS</span
+                >
+              </h5>
+              <p>September 2020 - April 2021</p>
+            </div>
             <p>
               GLSL code for non-complex BLAS operations with Vulkan. My final
               year masters project. Using modern C++ compile-time evaluation to
               validate shaders.
             </p>
-            <h5>
-              <span
-                class="lite-link"
-                href="https://jonathanwoollett-light.github.io/BLAS/"
-                >BLAS website</span
-              >
-            </h5>
-            <p>
-              <strong
-                >September 2021 - October 2021, Python, JavaScript &
-                HTML+CSS</strong
-              >
-            </p>
+            <div class="project-header">
+              <h5>
+                <span
+                  class="lite-link"
+                  href="https://jonathanwoollett-light.github.io/BLAS/"
+                  >BLAS website</span
+                >
+              </h5>
+              <p>September 2021 - October 2021</p>
+            </div>
             <p>
               A website documenting BLAS operations. While working on GLSL BLAS
               I found
@@ -1070,26 +1137,39 @@
                 >the older website</span
               >
               used to document BLAS to be a little uncomfortable, so I made
-              this.
-            </p>
-            <h5>
-              <span
-                class="lite-link"
-                href="https://github.com/JonathanWoollett-Light/cogent"
-                >Cogent</span
+              this. I've also added some Python
+              <span class="lite-link" href="https://www.manim.community/"
+                >Manim</span
               >
-            </h5>
-            <p><strong>September 2019 - March 2021, Rust</strong></p>
-            <p>
-              A simple library for training simple neural networks, a small
-              Keras. A component of my final year bachelors project.
+              animations to illustrate the operations.
             </p>
-            <h5>Genetic Draughts AI</h5>
-            <p><strong>2016, C++</strong></p>
+            <div class="project-header">
+              <h5>
+                <span
+                  class="lite-link"
+                  href="https://github.com/JonathanWoollett-Light/cogent"
+                  >Cogent</span
+                >
+              </h5>
+              <p>September 2019 - March 2021</p>
+            </div>
             <p>
-              A simple tree search program to play draughts using a genetic
+              A simple library Rust library using
+              <span class="lite-link" href="https://arrayfire.com/"
+                >ArrayFire</span
+              >
+              for training simple neural networks; like a small Keras. A
+              component of my final year bachelors project.
+            </p>
+            <div class="project-header">
+              <h5>Genetic Draughts AI</h5>
+              <p>2016</p>
+            </div>
+            <p>
+              A simple tree C++ search program to play draughts using a genetic
               algorithm to judge board positions. My first ever venture into
-              optimisation, I still remember the moment it beat me.
+              machine learning and optimisation, I still remember the moment it
+              beat me.
             </p>
           </div>
         </div>

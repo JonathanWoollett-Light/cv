@@ -582,33 +582,52 @@
         width: 1em;
         height: 1em;
       }
-      @media only screen and (min-width: 993px) {
-        .my-container {
-          width: 70%;
-        }
-      }
-      @media only screen and (min-width: 601px) {
-        .my-container {
-          width: 85%;
-        }
-      }
-      @media only screen and (min-width: 993px) {
-        #main {
-          grid-column-start: 3;
-          grid-column-end: span 10;
-        }
-      }
-      @media only screen and (min-width: 601px) {
-        #main {
-          grid-column-start: 4;
-          grid-column-end: span 12;
-        }
-      }
       .my-row {
         --gap-size: 1.5rem;
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         gap: var(--gap-size);
+      }
+      .icon {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+      .icon.large {
+        width: 2em;
+        height: 2em;
+      }
+      .icon.clickable {
+        cursor: pointer;
+        user-select: none; /* Prevent text selection on click */
+      }
+      .icon.clickable:hover {
+        fill: var(--md-sys-color-primary);
+      }
+      @media only screen and (min-width: 601px) {
+        .my-container {
+          width: 85%;
+        }
+        #main {
+          grid-column-start: 4;
+          grid-column-end: span 12;
+        }
+      }
+      @media only screen and (min-width: 993px) {
+        .my-container {
+          width: 70%;
+        }
+        #main {
+          grid-column-start: 3;
+          grid-column-end: span 10;
+        }
+        #contacts {
+          display: grid;
+          grid-template-columns: auto auto;
+          line-height: 0px;
+        }
       }
       @media print {
         /* Hide specific items when printing */
@@ -650,29 +669,13 @@
           grid-column-end: span 12;
         }
         #contacts {
+          display: grid;
+          grid-template-columns: auto auto;
           line-height: 0px;
         }
         #contacts > p {
           margin: 3px;
         }
-      }
-      .icon {
-        display: inline-block;
-        width: 1em;
-        height: 1em;
-        vertical-align: -0.125em;
-        fill: currentColor;
-      }
-      .icon.large {
-        width: 2em;
-        height: 2em;
-      }
-      .icon.clickable {
-        cursor: pointer;
-        user-select: none;  /* Prevent text selection on click */
-      }
-      .icon.clickable:hover {
-        fill: var(--md-sys-color-primary);
       }
     </style>
   </head>

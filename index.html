@@ -521,30 +521,25 @@
         font-size: 2.92rem;
         line-height: 110%;
         margin: 1.9466666667rem 0 1.168rem 0;
-        font-weight: 500;
+        font-weight: 400;
       }
       h4 {
         font-size: 2.28rem;
         line-height: 110%;
         margin: 1.52rem 0 0.912rem 0;
-        font-weight: 500;
+        font-weight: 400;
       }
       h5 {
         font-size: 1.64rem;
         line-height: 110%;
         margin: 1.0933333333rem 0 0.656rem 0;
-        font-weight: 500;
+        font-weight: 400;
       }
       h4,
       h5,
       p {
         margin-top: 5px;
         margin-bottom: 5px;
-      }
-      #programming_experience h5 {
-        margin-top: 2px;
-        margin-bottom: 2px;
-        font-size: 1.5rem;
       }
       strong {
         font-weight: 500;
@@ -577,6 +572,13 @@
       }
       .project-header :nth-child(2) {
         opacity: 0.7;
+      }
+      .project-header > h5 {
+        margin-top: 10px;
+        margin-bottom: 0px;
+      }
+      .project-header > p {
+        margin-bottom: 0px;
       }
       svg {
         width: 1em;
@@ -641,27 +643,18 @@
           color: inherit;
         }
         h3 {
-          /* margin-top: 2px !important; */
-          /* margin-bottom: 2px !important; */
           font-size: 30px;
         }
         h4 {
-          /* margin-top: 2px !important; */
-          /* margin-bottom: 2px !important; */
           font-size: 22px;
         }
         h5 {
           font-size: 16px;
         }
-        #programming_experience h5 {
-          margin-top: 2px;
-          margin-bottom: 2px;
-          font-size: 16px;
-        }
         strong,
         p {
-          margin-top: 3px;
-          margin-bottom: 3px;
+          margin-top: 2px;
+          margin-bottom: 2px;
           font-size: 12px;
         }
         #main {
@@ -738,7 +731,6 @@
               </svg>
             </span>
           </div>
-
           <div id="contacts">
             <p>
               <svg
@@ -856,175 +848,168 @@
               >A little more than an introduction to - YouTube</span
             >).
           </p>
-          <div id="work_experience">
-            <h4>Work experience</h4>
-            <div class="project-header">
-              <h5>
-                <span class="lite-link" href="https://aws.amazon.com/"
-                  >Amazon Web Services</span
-                >
-              </h5>
-              <p>April 2022 - June 2024</p>
-            </div>
-            <strong
-              ><span
-                class="lite-link"
-                href="https://maps.app.goo.gl/Drok6UA7W5empdoY6"
-                >Cambrigde</span
+          <h4>Experience</h4>
+          <div class="project-header">
+            <h5>
+              <span class="lite-link" href="https://www.york.ac.uk/"
+                >York University</span
               >
-              - Software development engineer</strong
+            </h5>
+            <p>April 2025 - Current</p>
+          </div>
+          <strong>PhD in Physics</strong>
+          <p>
+            I am currently undertaking a PhD in Physics at the University of
+            York with the research topic of 'Neuromorphic Computing for
+            Resource-Efficient Autonomous Systems'.
+          </p>
+          <div class="project-header">
+            <h5>
+              <span class="lite-link" href="https://aws.amazon.com/"
+                >Amazon Web Services</span
+              >
+            </h5>
+            <p>April 2022 - June 2024</p>
+          </div>
+          <strong
+            ><span
+              class="lite-link"
+              href="https://maps.app.goo.gl/Drok6UA7W5empdoY6"
+              >Cambrigde</span
             >
-            <p>
-              I worked on Firecracker, a memory efficient, fast booting VMM that
-              allows AWS lambda to be profitable.
-              <br /><br />
-              Firecracker supports snapshotting a VM; a VM can be saved and
-              restored much faster than booting a new one and much faster than
-              any other VMM. I spent time working on the safety and
-              configurability of this feature, this involved evaluating whether
-              a snapshot could be safely restored on a given CPU considering its
-              specified features and security mitigations, and those of the
-              target. This involved analysis of the performance and security
-              effects of CPU features on both x86-64 and aarch64, and ensuring
-              we had an implementation that aligned with the specifications.
-              <br /><br />
-              Firecracker supports a feature called CPU templates that allows a
-              user configurability of most of how the CPU is presented to the
-              guest OS. This work required understanding the Intel x86-64, AMD
-              x86-64 and Arm aarch64 specifications. Development involved
-              thorough discussion with customers and within our team both
-              focused on usability, security and robustness. I rewrote how
-              Firecracker handles static CPU templates to support runtime CPU
-              templates and wrote the foundational implementation for runtime
-              CPU templates. I also implemented thorough compatibility checks
-              for x86-64.
-              <br /><br />
-              I was the owner of an initiative to performance test Firecracker
-              in production-like scenarios, through this we discovered and fixed
-              significant performance regressions that may have costed AWS
-              Lambda millions of dollars if they went live. This work involved
-              coordinating across teams and diving deep into the deployment and
-              management of resources to setup the required environment and
-              execute the useful tests.
-              <br /><br />
-              In this role I and another team member adopted responsibility for
-              maintenance of the
-              <span class="lite-link" href="https://github.com/rust-vmm"
-                >rust-vmm</span
+            - Software development engineer</strong
+          >
+          <p>
+            I worked on Firecracker, a memory efficient, fast booting VMM that
+            allows AWS lambda to be profitable.
+            <br /><br />
+            Firecracker supports snapshotting a VM; a VM can be saved and
+            restored much faster than booting a new one and much faster than any
+            other VMM. I spent time working on the safety and configurability of
+            this feature, this involved evaluating whether a snapshot could be
+            safely restored on a given CPU considering its specified features
+            and security mitigations, and those of the target. This involved
+            analysis of the performance and security effects of CPU features on
+            both x86-64 and aarch64, and ensuring we had an implementation that
+            aligned with the specifications.
+            <br /><br />
+            Firecracker supports a feature called CPU templates that allows a
+            user configurability of most of how the CPU is presented to the
+            guest OS. This work required understanding the Intel x86-64, AMD
+            x86-64 and Arm aarch64 specifications. Development involved thorough
+            discussion with customers and within our team both focused on
+            usability, security and robustness. I rewrote how Firecracker
+            handles static CPU templates to support runtime CPU templates and
+            wrote the foundational implementation for runtime CPU templates. I
+            also implemented thorough compatibility checks for x86-64.
+            <br /><br />
+            I was the owner of an initiative to performance test Firecracker in
+            production-like scenarios, through this we discovered and fixed
+            significant performance regressions that may have costed AWS Lambda
+            millions of dollars if they went live. This work involved
+            coordinating across teams and diving deep into the deployment and
+            management of resources to setup the required environment and
+            execute the useful tests.
+            <br /><br />
+            In this role I and another team member adopted responsibility for
+            maintenance of the
+            <span class="lite-link" href="https://github.com/rust-vmm"
+              >rust-vmm</span
+            >
+            open source organization that maintained components used by
+            Firecracker and other VMMs such as
+            <span
+              class="lite-link"
+              href="https://github.com/cloud-hypervisor/cloud-hypervisor"
+              >cloud-hypervisor</span
+            >.
+          </p>
+          <div class="project-header">
+            <h5>
+              <span class="lite-link" href="https://www.renishaw.com/"
+                >Renishaw</span
               >
-              open source organization that maintained components used by
-              Firecracker and other VMMs such as
+            </h5>
+            <p>July 2018 - September 2018</p>
+          </div>
+          <strong
+            ><span
+              class="lite-link"
+              href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
+              >Wotton-under-Edge</span
+            >
+            - Software placement</strong
+          >
+          <p>
+            I worked on building C++ components forming an internal standard
+            library. This involved extensive testing and performance
+            consideration.
+          </p>
+          <div class="project-header">
+            <h5>
+              <span class="lite-link" href="https://www.swansea.ac.uk/"
+                >Swansea University</span
+              >
+            </h5>
+            <p>2017 - 2021</p>
+          </div>
+          <strong>MEng Computing & Bachelors 2.1</strong>
+          <p>
+            I competed with the university Taekwondo society, at times
+            internationally.
+          </p>
+          <div class="project-header">
+            <h5>
+              <span class="lite-link" href="https://www.renishaw.com/"
+                >Renishaw</span
+              >
+            </h5>
+            <p>A few weeks in 2016</p>
+          </div>
+          <strong
+            ><span
+              class="lite-link"
+              href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
+              >Wotton-under-Edge</span
+            >
+            - Work experience</strong
+          >
+          <p>My work experience focused on development with FPGAs and VHDL.</p>
+
+          <div class="project-header">
+            <h5>
+              <span class="lite-link" href="https://www.bhasvic.ac.uk/"
+                >Brighton and Hove Sixth Form College</span
+              >
+            </h5>
+            <p>2015 - 2017</p>
+          </div>
+          <strong
+            >A levels - Mathematics: B, Modern History: B, Computer Science:
+            C</strong
+          >
+          <p>
+            I did an Extended Project Qualification discussing the question 'Is
+            the development and completion of an AGI (Artificial General
+            Intelligence) likely within the next 80 years?'.
+          </p>
+          <div class="project-header">
+            <h5>
               <span
                 class="lite-link"
-                href="https://github.com/cloud-hypervisor/cloud-hypervisor"
-                >cloud-hypervisor</span
-              >.
-            </p>
-            <div class="project-header">
-              <h5>
-                <span class="lite-link" href="https://www.renishaw.com/"
-                  >Renishaw</span
-                >
-              </h5>
-              <p>July 2018 - September 2018</p>
-            </div>
-            <strong
-              ><span
-                class="lite-link"
-                href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
-                >Wotton-under-Edge</span
+                href="https://en.wikipedia.org/wiki/St_Andrew%27s_High_School,_Worthing"
+                >St Andrew's High School</span
               >
-              - Software placement</strong
-            >
-            <p>
-              I worked on building C++ components forming an internal standard
-              library. This involved extensive testing and performance
-              consideration.
-            </p>
-            <div class="project-header">
-              <h5>
-                <span class="lite-link" href="https://www.renishaw.com/"
-                  >Renishaw</span
-                >
-              </h5>
-              <p>A few weeks in 2016</p>
-            </div>
-            <strong
-              ><span
-                class="lite-link"
-                href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
-                >Wotton-under-Edge</span
-              >
-              - Work experience</strong
-            >
-            <p>
-              My work experience focused on development with FPGAs and VHDL.
-            </p>
+            </h5>
+            <p>2011 - 2015</p>
           </div>
-          <div id="education">
-            <h4>Education</h4>
-            <div class="project-header">
-              <h5>
-                <span class="lite-link" href="https://www.york.ac.uk/"
-                  >York University</span
-                >
-              </h5>
-              <p>April 2025 - Current</p>
-            </div>
-            <strong>PhD in Physics</strong>
-            <p>
-              I am currently undertaking a PhD in Physics at the University of
-              York with the research topic of 'Neuromorphic Computing for
-              Resource-Efficient Autonomous Systems'.
-            </p>
-            <div class="project-header">
-              <h5>
-                <span class="lite-link" href="https://www.swansea.ac.uk/"
-                  >Swansea University</span
-                >
-              </h5>
-              <p>2017 - 2021</p>
-            </div>
-            <strong>MEng Computing & Bachelors 2.1</strong>
-            <p>
-              I competed with the university Taekwondo society, at times
-              internationally.
-            </p>
-            <div class="project-header">
-              <h5>
-                <span class="lite-link" href="https://www.bhasvic.ac.uk/"
-                  >Brighton and Hove Sixth Form College</span
-                >
-              </h5>
-              <p>2015 - 2017</p>
-            </div>
-            <strong
-              >A levels - Mathematics: B, Modern History: B, Computer Science:
-              C</strong
-            >
-            <p>
-              I did an Extended Project Qualification discussing the question
-              'Is the development and completion of an AGI (Artificial General
-              Intelligence) likely within the next 80 years?'.
-            </p>
-            <div class="project-header">
-              <h5>
-                <span
-                  class="lite-link"
-                  href="https://en.wikipedia.org/wiki/St_Andrew%27s_High_School,_Worthing"
-                  >St Andrew's High School</span
-                >
-              </h5>
-              <p>2011 - 2015</p>
-            </div>
-            <strong>GCSEs 11 A*-C including mathematics and english</strong>
-            <p>
-              I founded the computing club, the debating club and was elected
-              deputy head boy by students.
-            </p>
-          </div>
-          <div id="programming_experience">
-            <h4>Programming experience</h4>
+          <strong>GCSEs 11 A*-C including mathematics and english</strong>
+          <p>
+            I founded the computing club, the debating club and was elected
+            deputy head boy by students.
+          </p>
+          <div class="programming_experience">
+            <h4 style="margin-top: 10px; margin-bottom: 10px">Portfolio</h4>
             <p>
               I am an expert in Rust, I am experienced in C++, C and Python, and
               I am familiar with Zig, Ada, aarch64 asm, RISC-V asm, JavaScript
@@ -1044,13 +1029,9 @@
               alt="GitHub contribution statistics"
               src="https://github-readme-stats.vercel.app/api?username=JonathanWoollett-Light&hide_rank=true&theme=transparent&show_icons=true&hide_title=true"
             />
-            <div class="project-header">
-              <h5>This website</h5>
-              <p>2024 - Current</p>
-            </div>
             <p>
-              A simple website serving the latest version of my curriculum
-              vitae.
+              <b>This website:</b> A simple website serving the latest version
+              of my curriculum vitae.
               <span
                 class="lite-link"
                 href="https://pagespeed.web.dev/analysis/https-jonathanwoollett-light-github-io-cv/t9hmb8mop0?form_factor=desktop"
@@ -1058,18 +1039,15 @@
               >, light and dark mode support, less than 100kb in size, and
               neatly prints to PDF.
             </p>
-            <div class="project-header">
-              <h5>Dating app</h5>
-              <p>2024 - Current</p>
-            </div>
             <p>
-              A dating app that learns user specific traits and preferences to
-              optimally match pairs. Applying ML with PyTorch to train models
-              capable of extracting user features from pictures and preferences
-              from swipe data supports matching users based on learned user
-              specific features (e.g. matching users based on presentation of
-              religious clothing). The server functions as an efficient monolith
-              capable of handling all requests on a single Rust
+              <b>Dating app:</b> A dating app that learns user specific traits
+              and preferences to optimally match pairs. Applying ML with PyTorch
+              to train models capable of extracting user features from pictures
+              and preferences from swipe data supports matching users based on
+              learned user specific features (e.g. matching users based on
+              presentation of religious clothing). The server functions as an
+              efficient monolith capable of handling all requests on a single
+              Rust
               <span class="lite-link" href="https://github.com/tokio-rs/axum"
                 >Axum</span
               >
@@ -1077,33 +1055,27 @@
               100% system utilisation; supporting all the functionality of a
               typical tinder-like dating app.
             </p>
-            <div class="project-header">
-              <h5>
+            <p>
+              <b>
                 <span
                   class="lite-link"
                   href="https://jonathanwoollett-light.github.io/formal/"
-                  >My programming language</span
+                  >My programming language:</span
                 >
-              </h5>
-              <p>August 2023 - Current</p>
-            </div>
-            <p>
+              </b>
               A procedural programming language with extensive formal
               verification, infallible type inference and next-gen compile-time
               evaluation. The compiler is written in Rust and compiles to
               RISC-V.
             </p>
-            <div class="project-header">
-              <h5>
+            <p>
+              <b>
                 <span
                   class="lite-link"
                   href="https://github.com/ci-metrics/example"
-                  >CI Metrics</span
+                  >CI Metrics:</span
                 >
-              </h5>
-              <p>November 2023 - April 2025</p>
-            </div>
-            <p>
+              </b>
               A website to track performance metrics (continuous benchmarking)
               and integrate with GitHub. A Rust
               <span class="lite-link" href="https://github.com/tokio-rs/axum"
@@ -1127,70 +1099,54 @@
               at AWS where regressions that could have cost millions in
               production were almost missed, and certainly some were.
             </p>
-            <div class="project-header">
-              <h5>Live migration web server</h5>
-              <p>February 2023 - November 2023</p>
-            </div>
             <p>
+              <b>Live migration web server:</b>
               A Rust server framework where a new server process can succeed a
               local old process in milliseconds with shared memory (or remotely
               in seconds over TCP) without dropping client streams. This can be
               used as a database server with in-memory data storage akin to
               Redis where queries are compiled as new functions.
             </p>
-            <div class="project-header">
-              <h5>
+            <p>
+              <b>
                 <span
                   class="lite-link"
                   href="https://github.com/JonathanWoollett-Light/rust-ad"
                   >RUST-AD</span
                 >
-              </h5>
-              <p>December 2021 - January 2022</p>
-            </div>
-            <p>
+              </b>
               Auto-differentiation library with code transformation for both
               forward and reverse auto-diff written in Rust.
             </p>
-            <div class="project-header">
-              <h5>Mathematics Site</h5>
-              <p>April 2021 - June 2022</p>
-            </div>
             <p>
-              A mathematics website for automated marking. Built with a Rust
+              <b>Mathematics Site:</b> A mathematics website for automated
+              marking. Built with a Rust
               <span class="lite-link" href="https://github.com/actix/actix-web"
                 >Actix</span
               >
               backend using a PyTorch semantic segmentation model, deployed with
               AWS, with a MongoDB database.
             </p>
-
-            <div class="project-header">
-              <h5>
+            <p>
+              <b>
                 <span
                   class="lite-link"
                   href="https://github.com/JonathanWoollett-Light/GLSL-BLAS"
                   >GLSL BLAS</span
                 >
-              </h5>
-              <p>September 2020 - April 2021</p>
-            </div>
-            <p>
+              </b>
               GLSL code for non-complex BLAS operations with Vulkan. My final
               year masters project. Using modern C++ compile-time evaluation to
               validate shaders.
             </p>
-            <div class="project-header">
-              <h5>
+            <p>
+              <b>
                 <span
                   class="lite-link"
                   href="https://jonathanwoollett-light.github.io/BLAS/"
-                  >BLAS website</span
+                  >BLAS website:</span
                 >
-              </h5>
-              <p>September 2021 - October 2021</p>
-            </div>
-            <p>
+              </b>
               A website documenting BLAS operations. While working on GLSL BLAS
               I found
               <span class="lite-link" href="https://www.netlib.org/blas/"
@@ -1203,17 +1159,14 @@
               >
               animations to illustrate the operations.
             </p>
-            <div class="project-header">
-              <h5>
+            <p>
+              <b>
                 <span
                   class="lite-link"
                   href="https://github.com/JonathanWoollett-Light/cogent"
-                  >Cogent</span
+                  >Cogent:</span
                 >
-              </h5>
-              <p>September 2019 - March 2021</p>
-            </div>
-            <p>
+              </b>
               A simple library Rust library using
               <span class="lite-link" href="https://arrayfire.com/"
                 >ArrayFire</span
@@ -1221,15 +1174,11 @@
               for training simple neural networks; like a small Keras. A
               component of my final year bachelors project.
             </p>
-            <div class="project-header">
-              <h5>Genetic Draughts AI</h5>
-              <p>2016</p>
-            </div>
             <p>
-              A simple tree C++ search program to play draughts using a genetic
-              algorithm to judge board positions. My first ever venture into
-              machine learning and optimisation, I still remember the moment it
-              beat me.
+              <b>Genetic Draughts AI</b> My first ever venture into machine
+              learning and optimisation. A simple tree C++ search program to
+              play draughts using a genetic algorithm to judge board positions.
+              I still remember the moment it beat me.
             </p>
           </div>
         </div>
@@ -1301,6 +1250,14 @@
       for (let i = 0; i < liteLinks.length; i++) {
         liteLinks[i].addEventListener("click", (event) => {
           window.location.href = event.target.getAttribute("href");
+        });
+      }
+
+      // If the code overview doesn't work, just hide them.
+      const imgs = document.getElementsByTagName("img");
+      for (let i = 0; i < imgs.length; i++) {
+        imgs[i].addEventListener("error", (img) => {
+          img.target.setAttribute("hidden", "");
         });
       }
     </script>

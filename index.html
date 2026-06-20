@@ -587,11 +587,14 @@
       }
       .content p {
         font-size: 0.9375rem;
-        line-height: 1.6;
+        line-height: 1.65;
         margin: 0.5rem 0;
       }
+      /* Role / qualification line: its own line, grouped tight under its heading */
       strong {
+        display: block;
         font-weight: 600;
+        margin-top: 0.5rem;
       }
 
       /* ---- Section headers: prompt marker + hairline rule + // comment ---- */
@@ -652,7 +655,7 @@
         justify-content: space-between;
         align-items: baseline;
         gap: 0.25rem 1rem;
-        margin-top: 1.1rem;
+        margin-top: 1.75rem;
       }
       .project-header h3 {
         font-size: 1rem;
@@ -666,11 +669,16 @@
         white-space: nowrap;
       }
 
-      /* ---- Portfolio ---- */
+      /* ---- Portfolio: each project a distinct block, title on its own line ---- */
       #portfolio-projects p {
-        margin: 0.65rem 0;
+        margin: 0 0 1.5rem;
+      }
+      #portfolio-projects p:last-child {
+        margin-bottom: 0;
       }
       #portfolio-projects b {
+        display: block;
+        margin-bottom: 0.3rem;
         font-weight: 600;
       }
 
@@ -796,6 +804,7 @@
         }
         #portfolio-projects p {
           font-size: 12px;
+          margin: 0 0 8px;
         }
         /* Dates and contact glyphs keep an explicit color token, so force them
            black in case a dark theme is active when printing without beforeprint. */
@@ -810,6 +819,7 @@
         .project-header {
           break-inside: avoid;
           break-after: avoid;
+          margin-top: 12px;
         }
         .project-header + strong {
           break-after: avoid;
@@ -1133,6 +1143,33 @@
         </p>
         <div id="portfolio-projects">
           <p>
+            <b>
+              <a href="https://jonathanwoollett-light.github.io/formal/"
+                >My programming language:</a
+              >
+            </b>
+            A verifying compiler for bare-metal RISC-V, written in Rust. You
+            write a small Python-like language, and the compiler accepts your
+            program only if it can prove (by symbolically executing the actual
+            machine code across every hardware-thread interleaving and every
+            admissible type assignment) that no assertion can fail and no memory
+            access is ever out of bounds, even for intentionally racy, lock-free
+            code. Its type inference is complete, or 'infallible': a variable
+            left unspecified is accepted exactly when some typing makes the
+            whole program verify, because inference and verification are the
+            same search. The proof's by-products then drive code generation: it
+            infers the memory layout and performs dead-data elimination,
+            deleting interior bytes of live data it proved are never touched at
+            runtime and rewriting the address arithmetic to match. It verifies
+            the instructions themselves rather than high-level source, shrinking
+            the trusted base to a small layout-only lowering plus the assembler
+            and linker; conceptually it generalises Zig's concrete compile-time
+            evaluation to full symbolic exploration and turns Rust's
+            conservative data-race prohibition into exact, per-assertion race
+            verification, with parallel and distributed (MPI) verifiers checked
+            against a trusted single-threaded oracle.
+          </p>
+          <p>
             <b>CV website:</b> A simple website serving the latest version of my
             curriculum vitae. A near-perfect Google Lighthouse score, light and
             dark mode support, less than 100kb in size, and neatly prints to
@@ -1166,16 +1203,6 @@
           </p>
           <p>
             <b>
-              <a href="https://jonathanwoollett-light.github.io/formal/"
-                >My programming language:</a
-              >
-            </b>
-            A procedural programming language with extensive formal
-            verification, infallible type inference and next-gen compile-time
-            evaluation. The compiler is written in Rust and compiles to RISC-V.
-          </p>
-          <p>
-            <b>
               <a href="https://github.com/ci-metrics/example">CI Metrics:</a>
             </b>
             A website to track performance metrics (continuous benchmarking) and
@@ -1206,7 +1233,7 @@
           <p>
             <b>
               <a href="https://github.com/JonathanWoollett-Light/rust-ad"
-                >RUST-AD</a
+                >RUST-AD:</a
               >
             </b>
             Auto-differentiation library with code transformation for both

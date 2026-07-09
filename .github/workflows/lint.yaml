@@ -1,12 +1,26 @@
-name: Linting
+name: Build and lint
 on:
   push:
 
 jobs:
-  prettier:
-    name: Checks formatting
+  build:
+    name: Rebuild index.html from cv.tex and check it is current
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    - run: npx prettier ./index.html --check
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      # Pinned: the build must be byte-reproducible for the diff check below.
+      - name: Install pandoc
+        uses: pandoc/actions/setup@v1
+        with:
+          version: "3.10"
+      - name: Install node dependencies
+        run: npm ci
+      # Regenerates index.html from cv.tex, then formats it with prettier.
+      - name: Build
+        run: npm run build
+      # index.html is committed because GitHub Pages serves it directly. If this
+      # fails, someone edited index.html by hand or forgot to run `npm run build`
+      # after editing cv.tex. This also catches any formatting drift.
+      - name: Fail if the committed index.html is out of date
+        run: git diff --exit-code -- index.html

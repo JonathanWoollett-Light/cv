@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <!--Required: pandoc emits real curly quotes, en dashes and bullets.-->
+    <meta charset="utf-8" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Jonathan Woollett-Light's CV" />
+    <title>$title$</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+
+    <!--
+      GENERATED FILE - do not edit index.html by hand.
+      Content lives in cv.tex; this chrome lives in build/template.html.
+      Rebuild with `npm run build`.
+    -->
+    <style>
+      /* ---------------------------------------------------------------
+         Palette. Classic white paper, black ink; dark mode is a neutral
+         grey. Only one accent (a muted academic navy) is used, for links.
+         --------------------------------------------------------------- */
+      :root {
+        color-scheme: light;
+        --paper: #ffffff;
+        --ink: #14161a;
+        --ink-muted: #585d65;
+        --rule: #c4c8ce;
+        --rule-strong: #14161a;
+        --link: #1a3a6b;
+      }
+      /* `screen and` matters: without it this rule's (0,2,0) specificity
+         would beat the print override below and print a dark page. */
+      @media screen and (prefers-color-scheme: dark) {
+        :root:not([theme]) {
+          color-scheme: dark;
+          --paper: #191b1f;
+          --ink: #e4e6e9;
+          --ink-muted: #a2a8b0;
+          --rule: #3b4046;
+          --rule-strong: #e4e6e9;
+          --link: #9fbdea;
+        }
+      }
+      :root[theme="dark"] {
+        color-scheme: dark;
+        --paper: #191b1f;
+        --ink: #e4e6e9;
+        --ink-muted: #a2a8b0;
+        --rule: #3b4046;
+        --rule-strong: #e4e6e9;
+        --link: #9fbdea;
+      }
+
+      /* ---------------------------------------------------------------
+         Typography. Prefer a locally-installed TeX face so a machine with
+         LaTeX shows true Computer Modern; otherwise fall back to a serif.
+         No web fonts are downloaded.
+         --------------------------------------------------------------- */
+      html {
+        font-family:
+          "Latin Modern Roman", "CMU Serif", "TeX Gyre Termes",
+          "Times New Roman", Times, Georgia, serif;
+        font-size: 17px;
+        font-kerning: normal;
+        font-variant-ligatures: common-ligatures;
+        color: var(--ink);
+        background-color: var(--paper);
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        position: relative;
+        margin: 0;
+        padding: 3.25rem 1.25rem 4rem;
+        background-color: var(--paper);
+      }
+      /* ~65-70 characters per line, LaTeX's \textwidth in spirit. */
+      .paper {
+        max-width: 62rem;
+        margin: 0 auto;
+      }
+
+      /* Body copy: justified with hyphenation, as TeX sets it. The
+         lang attribute on <html> is what enables hyphens: auto. */
+      p {
+        margin: 0 0 0.6em;
+        line-height: 1.35;
+        text-align: justify;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+      }
+
+      /* \maketitle: the title is roman and NOT bold. */
+      .name {
+        margin: 0 0 0.5em;
+        font-size: 2.074em;
+        font-weight: 400;
+        line-height: 1.2;
+        letter-spacing: 0.01em;
+        text-align: center;
+      }
+
+      /* The contact block, from \begin{center} in cv.tex. It closes the
+         masthead with the one heavy rule on the page. */
+      .paper > .center {
+        margin: 0 0 1.5em;
+        padding-bottom: 0.9em;
+        border-bottom: 1px solid var(--rule-strong);
+        color: var(--ink-muted);
+        font-size: 0.9em;
+      }
+      .paper > .center p {
+        margin: 0;
+        line-height: 1.5;
+        text-align: center;
+        hyphens: manual;
+      }
+
+      /* Section rubrics: small caps closed by a hairline, the titlesec
+         \titlerule look. Unnumbered, as an academic CV is. */
+      section.level2 {
+        margin-top: 1.9em;
+      }
+      section.level2 > h2 {
+        margin: 0 0 0.7em;
+        padding-bottom: 0.22em;
+        border-bottom: 1px solid var(--rule);
+        font-size: 1.2em;
+        font-weight: 400;
+        font-variant-caps: small-caps;
+        letter-spacing: 0.07em;
+      }
+
+      /* One experience/education entry: organisation flush left, dates
+         flush right on a shared baseline (LaTeX's \hfill). */
+      section.level3 {
+        margin-top: 1.2em;
+      }
+      section.level3 > h3 {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1em;
+        margin: 0;
+        font-size: 1em;
+        font-weight: 700;
+      }
+      section.level3 > h3 em {
+        flex: none;
+        font-size: 0.9em;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--ink-muted);
+        white-space: nowrap;
+      }
+      /* The role line sits directly under the organisation, in italics. */
+      section.level3 > h3 + p {
+        margin: 0.1em 0 0.4em;
+        text-align: left;
+      }
+      section.level3 > h3 + p strong {
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      /* Portfolio entries are set like a bibliography: a run-in title and
+         a hanging indent. */
+      #portfolio > p:has(> strong:first-child) {
+        margin-bottom: 0.85em;
+        padding-left: 1.6em;
+        text-indent: -1.6em;
+      }
+
+      /* Links are the one accent. Titles and organisations stay ink, as a
+         bibliography would set them, and reveal themselves on hover. */
+      a {
+        color: var(--link);
+        text-decoration: none;
+      }
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+      }
+      section.level3 > h3 a,
+      #portfolio > p > strong a {
+        color: inherit;
+      }
+
+      /* ---------------------------------------------------------------
+         Page chrome: theme toggle and print button. Never printed.
+         --------------------------------------------------------------- */
+      .controls {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .icon {
+        display: inline-block;
+        width: 1.15em;
+        height: 1.15em;
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+      .icon.clickable {
+        color: var(--ink-muted);
+        cursor: pointer;
+        user-select: none;
+      }
+      .icon.clickable:hover {
+        color: var(--link);
+      }
+      .icon.clickable:focus-visible {
+        color: var(--link);
+        outline: 2px solid var(--link);
+        outline-offset: 2px;
+        border-radius: 3px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        html {
+          font-size: 16px;
+        }
+        body {
+          padding: 3rem 1rem 2.5rem;
+        }
+        .name {
+          font-size: 1.728em;
+        }
+        /* Long dates would otherwise crush the organisation name. */
+        section.level3 > h3 {
+          display: block;
+        }
+        section.level3 > h3 em {
+          display: block;
+          white-space: normal;
+        }
+      }
+
+      /* ---------------------------------------------------------------
+         Print. Forced to black ink on white regardless of the active
+         theme, so a print-to-PDF that never fires `beforeprint` is still
+         correct. `:root[theme]` matches the dark selector's specificity
+         and wins on source order.
+         --------------------------------------------------------------- */
+      @media print {
+        /* Every selector here matches the specificity of the rules it must
+           override (:root:not([theme]) and :root[theme="dark"]) and wins on
+           source order, so print is black-on-white for any active theme. */
+        :root,
+        :root:not([theme]),
+        :root[theme] {
+          color-scheme: light;
+          --paper: #ffffff;
+          --ink: #000000;
+          --ink-muted: #000000;
+          --rule: #000000;
+          --rule-strong: #000000;
+          --link: #000000;
+        }
+        html {
+          font-size: 11pt;
+        }
+        body {
+          padding: 0;
+        }
+        .paper {
+          max-width: none;
+        }
+        .no-print,
+        .no-print * {
+          display: none !important;
+        }
+        a {
+          color: inherit;
+        }
+        p {
+          line-height: 1.2;
+          orphans: 2;
+          widows: 2;
+        }
+        section.level2 > h2,
+        section.level3 > h3 {
+          break-after: avoid;
+        }
+        section.level3 {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <span class="controls no-print">
+      <svg
+        id="dark-mode"
+        class="icon clickable"
+        style="display: none"
+        role="button"
+        tabindex="0"
+        aria-label="Switch to light theme"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 640 640"
+      >
+        <path
+          d="M320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C388.8 576 451.3 548.8 497.3 504.6C504.6 497.6 506.7 486.7 502.6 477.5C498.5 468.3 488.9 462.6 478.8 463.4C473.9 463.8 469 464 464 464C362.4 464 280 381.6 280 280C280 207.9 321.5 145.4 382.1 115.2C391.2 110.7 396.4 100.9 395.2 90.8C394 80.7 386.6 72.5 376.7 70.3C358.4 66.2 339.4 64 320 64z"
+        />
+      </svg>
+      <svg
+        id="light-mode"
+        class="icon clickable"
+        style="display: none"
+        role="button"
+        tabindex="0"
+        aria-label="Switch to automatic theme"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 640 640"
+      >
+        <path
+          d="M210.2 53.9C217.6 50.8 226 51.7 232.7 56.1L320.5 114.3L408.3 56.1C415 51.7 423.4 50.9 430.8 53.9C438.2 56.9 443.4 63.5 445 71.3L465.9 174.5L569.1 195.4C576.9 197 583.5 202.4 586.5 209.7C589.5 217 588.7 225.5 584.3 232.2L526.1 320L584.3 407.8C588.7 414.5 589.5 422.9 586.5 430.3C583.5 437.7 576.9 443.1 569.1 444.6L465.8 465.4L445 568.7C443.4 576.5 438 583.1 430.7 586.1C423.4 589.1 414.9 588.3 408.2 583.9L320.4 525.7L232.6 583.9C225.9 588.3 217.5 589.1 210.1 586.1C202.7 583.1 197.3 576.5 195.8 568.7L175 465.4L71.7 444.5C63.9 442.9 57.3 437.5 54.3 430.2C51.3 422.9 52.1 414.4 56.5 407.7L114.7 320L56.5 232.2C52.1 225.5 51.3 217.1 54.3 209.7C57.3 202.3 63.9 196.9 71.7 195.4L175 174.6L195.9 71.3C197.5 63.5 202.9 56.9 210.2 53.9zM239.6 320C239.6 275.6 275.6 239.6 320 239.6C364.4 239.6 400.4 275.6 400.4 320C400.4 364.4 364.4 400.4 320 400.4C275.6 400.4 239.6 364.4 239.6 320zM448.4 320C448.4 249.1 390.9 191.6 320 191.6C249.1 191.6 191.6 249.1 191.6 320C191.6 390.9 249.1 448.4 320 448.4C390.9 448.4 448.4 390.9 448.4 320z"
+        />
+      </svg>
+      <svg
+        id="auto-mode"
+        class="icon clickable"
+        style="display: none"
+        role="button"
+        tabindex="0"
+        aria-label="Switch to dark theme"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 640 640"
+      >
+        <path
+          d="M512 320C512 214 426 128 320 128L320 512C426 512 512 426 512 320zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320z"
+        />
+      </svg>
+      <svg
+        onclick="window.print()"
+        class="icon clickable"
+        role="button"
+        tabindex="0"
+        aria-label="Print this CV"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 640 640"
+      >
+        <path
+          d="M128 128C128 92.7 156.7 64 192 64L405.5 64C422.5 64 438.8 70.7 450.8 82.7L493.3 125.2C505.3 137.2 512 153.5 512 170.5L512 208L128 208L128 128zM64 320C64 284.7 92.7 256 128 256L512 256C547.3 256 576 284.7 576 320L576 416C576 433.7 561.7 448 544 448L512 448L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 448L96 448C78.3 448 64 433.7 64 416L64 320zM192 480L192 512L448 512L448 416L192 416L192 480zM520 336C520 322.7 509.3 312 496 312C482.7 312 472 322.7 472 336C472 349.3 482.7 360 496 360C509.3 360 520 349.3 520 336z"
+        />
+      </svg>
+    </span>
+    <main class="paper">
+      $if(title)$
+      <h1 class="name">$title$</h1>
+      $endif$ $body$
+    </main>
+    <script>
+      // Set initial theme based on local storage.
+      const currentTheme = localStorage.getItem("theme");
+      const darkMode = document.getElementById("dark-mode");
+      const lightMode = document.getElementById("light-mode");
+      const autoMode = document.getElementById("auto-mode");
+      if (currentTheme) {
+        document.documentElement.setAttribute("theme", currentTheme);
+        if (currentTheme == "dark") {
+          darkMode.style.removeProperty("display");
+        } else {
+          lightMode.style.removeProperty("display");
+        }
+      } else {
+        autoMode.style.removeProperty("display");
+      }
+
+      // Set theme switching. The visible icon is the current mode, and
+      // clicking it advances dark -> light -> auto -> dark.
+      darkMode.addEventListener("click", () => {
+        document.documentElement.setAttribute("theme", "light");
+        localStorage.setItem("theme", "light");
+        darkMode.style.display = "none";
+        lightMode.style.removeProperty("display");
+        autoMode.style.display = "none";
+      });
+      lightMode.addEventListener("click", () => {
+        document.documentElement.removeAttribute("theme");
+        localStorage.removeItem("theme");
+        darkMode.style.display = "none";
+        lightMode.style.display = "none";
+        autoMode.style.removeProperty("display");
+      });
+      autoMode.addEventListener("click", () => {
+        document.documentElement.setAttribute("theme", "dark");
+        localStorage.setItem("theme", "dark");
+        darkMode.style.removeProperty("display");
+        lightMode.style.display = "none";
+        autoMode.style.display = "none";
+      });
+
+      // Keyboard support for the icon controls (Enter / Space).
+      document.querySelectorAll(".clickable").forEach((el) => {
+        el.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            el.dispatchEvent(new MouseEvent("click"));
+          }
+        });
+      });
+
+      // Printing logic.
+      window.addEventListener("beforeprint", () => {
+        document.documentElement.setAttribute("theme", "light");
+      });
+      window.addEventListener("afterprint", () => {
+        switch (localStorage.getItem("theme")) {
+          case "dark":
+            document.documentElement.setAttribute("theme", "dark");
+            break;
+          case "light":
+            document.documentElement.setAttribute("theme", "light");
+            break;
+          default:
+            document.documentElement.removeAttribute("theme");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+node_modules/
+
+# LaTeX build artefacts, produced by `npm run pdf`.
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.synctex.gz
+*.toc

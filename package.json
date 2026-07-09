@@ -1,0 +1,14 @@
+{
+  "name": "cv",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jonathan Woollett-Light's CV. cv.tex is the source of truth; index.html is generated from it by pandoc.",
+  "scripts": {
+    "build": "pandoc cv.tex --from=latex --to=html5 --shift-heading-level-by=1 --section-divs --template=build/template.html --output=index.html && prettier --write index.html",
+    "check": "prettier --check index.html",
+    "pdf": "pdflatex -interaction=nonstopmode cv.tex"
+  },
+  "devDependencies": {
+    "prettier": "3.7.2"
+  }
+}

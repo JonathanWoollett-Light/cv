@@ -370,17 +370,18 @@
         </p>
       </div>
       <p>
-        I am a PhD student in Physics at the University of York with the
-        research topic of ‘Neuromorphic Computing for Resource-Efficient
-        Autonomous Systems’. This entails investigation of a wide range of
-        AI/ML/RL algorithms and their respective hardware accelerators with
-        particular focus and consideration of neurmorphic hardware and
-        algorithms, and how they compare to more traditional ANNs. I have a
-        specific interest in low level systems and tooling. I am a frequent
-        Open-Source contributor having contributed to ziglang, rustlang and
-        popular Rust crates. I have a small educational YouTube channel where I
-        very infrequently post videos about technical topics I find interesting
-        (<a href="https://www.youtube.com/@alittlemorethananintroduct1604"
+        I am a PhD student in Physics at the University of York, working on
+        neuromorphic computing for resource-efficient autonomous systems; my
+        thesis is titled ‘Are SNNs more robust?’. This entails investigation of
+        a wide range of AI/ML/RL algorithms and their respective hardware
+        accelerators with particular focus and consideration of neuromorphic
+        hardware and algorithms, and how they compare to more traditional ANNs.
+        I have a specific interest in low level systems and tooling. I am a
+        frequent Open-Source contributor having contributed to ziglang, rustlang
+        and popular Rust crates. I have a small educational YouTube channel
+        where I very infrequently post videos about technical topics I find
+        interesting (<a
+          href="https://www.youtube.com/@alittlemorethananintroduct1604"
           >A little more than an introduction to – YouTube</a
         >).
       </p>
@@ -397,8 +398,27 @@
           <p><strong>PhD in Physics</strong></p>
           <p>
             I am currently undertaking a PhD in Physics at the University of
-            York with the research topic of ‘Neuromorphic Computing for
-            Resource-Efficient Autonomous Systems’.
+            York with an idea of a thesis on how spiking neural networks (SNNs)
+            interact with robustness; with the broad thrust of the thesis being
+            to provide a more encompassing answer to the question of whether
+            SNNs are more robust than ANNs.
+          </p>
+          <p>
+            In my exploration of the literature and initial experimentatation I
+            went through multiple iterations of thinking I’d found a novel
+            contribution only to find it had been already done (to varying
+            extents). Through struggling to find an unexplored area, I
+            considered work on contribution of a novel methodology re-running
+            existing experiments under a more structured and equal framework,
+            although I came to think that this claim of a contribution of a
+            novel methodology to justify publication of questionably novel
+            results would seem a strategy of masking a failure to find a truly
+            novel contribution rather than a real contribution to be proud of.
+            In continuing my reading I have tried to focus on narrow,
+            falsifiable claims, eventually settling on an ablation study on the
+            leak and reset paramters of leaky-integrate-and-fire (LIF) neurons
+            in SNNs, analyzing their recurrence properties and how they
+            interaction with different forms of perturbation.
           </p>
         </section>
         <section
@@ -483,20 +503,6 @@
             consideration.
           </p>
         </section>
-      </section>
-      <section id="education" class="level2">
-        <h2>Education</h2>
-        <section id="swansea-university2017-2021" class="level3 unnumbered">
-          <h3 class="unnumbered">
-            <a href="https://www.swansea.ac.uk/">Swansea University</a
-            ><em>2017 – 2021</em>
-          </h3>
-          <p><strong>MEng Computing &amp; Bachelors 2.1</strong></p>
-          <p>
-            I competed with the university Taekwondo society, at times
-            internationally.
-          </p>
-        </section>
         <section id="renishawa-few-weeks-in-2016" class="level3 unnumbered">
           <h3 class="unnumbered">
             <a href="https://www.renishaw.com/">Renishaw</a
@@ -511,6 +517,20 @@
             >
           </p>
           <p>My work experience focused on development with FPGAs and VHDL.</p>
+        </section>
+      </section>
+      <section id="education" class="level2">
+        <h2>Education</h2>
+        <section id="swansea-university2017-2021" class="level3 unnumbered">
+          <h3 class="unnumbered">
+            <a href="https://www.swansea.ac.uk/">Swansea University</a
+            ><em>2017 – 2021</em>
+          </h3>
+          <p><strong>MEng Computing &amp; Bachelors 2.1</strong></p>
+          <p>
+            I competed with the university Taekwondo society, at times
+            internationally.
+          </p>
         </section>
         <section
           id="brighton-and-hove-sixth-form-college2015-2017"
@@ -592,6 +612,26 @@
           single self-contained page: a near-perfect Google Lighthouse score,
           light and dark mode support, less than 100kb in size, and neatly
           prints to PDF.
+        </p>
+        <p>
+          <strong><a href="https://byrig.uk/">Property search:</a></strong> A
+          rental property search tool that scrapes Rightmove and ranks listings
+          against weighted preferences for distance, price, size and ‘vibe’, the
+          last elicited by pairwise voting scored with Glicko-2. It is a single
+          self-contained HTML page with no backend: floor area is read out of
+          the floorplan image by
+          <a href="https://huggingface.co/vikhyatk/moondream2">Moondream2</a>, a
+          vision-language model running in the browser through
+          <a href="https://huggingface.co/docs/transformers.js"
+            >Transformers.js</a
+          >
+          and WebGPU, falling back to Tesseract OCR where WebGPU is unavailable,
+          and the location box autocompletes offline from a bundled
+          <a href="https://www.geonames.org/">GeoNames</a> dataset of UK places.
+          It is tested by driving the real, unmodified page in a headless
+          browser over WebDriver with the network intercepted, so the whole user
+          journey is deterministic and each run records screenshots, a trace and
+          logs.
         </p>
         <p>
           <strong>Hearts of Iorn 4 modding:</strong> I’m the owner and

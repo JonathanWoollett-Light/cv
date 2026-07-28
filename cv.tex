@@ -61,12 +61,12 @@ York, United Kingdom \textbullet{}
 \href{https://www.youtube.com/@alittlemorethananintroduct1604}{YouTube}
 \end{center}
 
-I am a PhD student in Physics at the University of York with the research topic
-of `Neuromorphic Computing for Resource-Efficient Autonomous Systems'. This
-entails investigation of a wide range of AI/ML/RL algorithms and their
-respective hardware accelerators with particular focus and consideration of
-neurmorphic hardware and algorithms, and how they compare to more traditional
-ANNs. I have a specific interest in low level systems and tooling. I am a
+I am a PhD student in Physics at the University of York, working on neuromorphic
+computing for resource-efficient autonomous systems; my thesis is titled `Are
+SNNs more robust?'. This entails investigation of a wide range of AI/ML/RL
+algorithms and their respective hardware accelerators with particular focus and
+consideration of neuromorphic hardware and algorithms, and how they compare to
+more traditional ANNs. I have a specific interest in low level systems and tooling. I am a
 frequent Open-Source contributor having contributed to ziglang, rustlang and
 popular Rust crates. I have a small educational YouTube channel where I very
 infrequently post videos about technical topics I find interesting
@@ -76,9 +76,9 @@ than an introduction to -- YouTube}).
 \section{Experience}
 
 \entry{https://www.york.ac.uk/}{York University}{April 2025 -- Current}{PhD in Physics}
-I am currently undertaking a PhD in Physics at the University of York with the
-research topic of `Neuromorphic Computing for Resource-Efficient Autonomous
-Systems'.
+I am currently undertaking a PhD in Physics at the University of York with an idea of a thesis on how spiking neural networks (SNNs) interact with robustness; with the broad thrust of the thesis being to provide a more encompassing answer to the question of whether SNNs are more robust than ANNs.
+
+In my exploration of the literature and initial experimentatation I went through multiple iterations of thinking I'd found a novel contribution only to find it had been already done (to varying extents). Through struggling to find an unexplored area, I considered work on contribution of a novel methodology re-running existing experiments under a more structured and equal framework, although I came to think that this claim of a contribution of a novel methodology to justify publication of questionably novel results would seem a strategy of masking a failure to find a truly novel contribution rather than a real contribution to be proud of. In continuing my reading I have tried to focus on narrow, falsifiable claims, eventually settling on an ablation study on the leak and reset paramters of leaky-integrate-and-fire (LIF) neurons in SNNs, analyzing their recurrence properties and how they interaction with different forms of perturbation.
 
 \entry{https://aws.amazon.com/}{Amazon Web Services}{April 2022 -- June 2024}{\href{https://maps.app.goo.gl/Drok6UA7W5empdoY6}{Cambrigde} -- Software development engineer}
 I worked on Firecracker, a memory efficient, fast booting VMM that allows AWS
@@ -118,13 +118,13 @@ maintained components used by Firecracker and other VMMs such as
 I worked on building C++ components forming an internal standard library. This
 involved extensive testing and performance consideration.
 
+\entry{https://www.renishaw.com/}{Renishaw}{A few weeks in 2016}{\href{https://maps.app.goo.gl/d1S4cdULwPKQcSf98}{Wotton-under-Edge} -- Work experience}
+My work experience focused on development with FPGAs and VHDL.
+
 \section{Education}
 
 \entry{https://www.swansea.ac.uk/}{Swansea University}{2017 -- 2021}{MEng Computing \& Bachelors 2.1}
 I competed with the university Taekwondo society, at times internationally.
-
-\entry{https://www.renishaw.com/}{Renishaw}{A few weeks in 2016}{\href{https://maps.app.goo.gl/d1S4cdULwPKQcSf98}{Wotton-under-Edge} -- Work experience}
-My work experience focused on development with FPGAs and VHDL.
 
 \entry{https://www.bhasvic.ac.uk/}{Brighton and Hove Sixth Form College}{2015 -- 2017}{A levels -- Mathematics: B, Modern History: B, Computer Science: C}
 I did an Extended Project Qualification discussing the question `Is the
@@ -165,6 +165,20 @@ A simple website serving the latest version of my curriculum vitae. Written in
 LaTeX and rendered to a single self-contained page: a near-perfect Google
 Lighthouse score, light and dark mode support, less than 100kb in size, and
 neatly prints to PDF.
+
+\project{https://byrig.uk/}{Property search:}
+A rental property search tool that scrapes Rightmove and ranks listings against
+weighted preferences for distance, price, size and `vibe', the last elicited by
+pairwise voting scored with Glicko-2. It is a single self-contained HTML page with
+no backend: floor area is read out of the floorplan image by
+\href{https://huggingface.co/vikhyatk/moondream2}{Moondream2}, a vision-language
+model running in the browser through
+\href{https://huggingface.co/docs/transformers.js}{Transformers.js} and WebGPU,
+falling back to Tesseract OCR where WebGPU is unavailable, and the location box
+autocompletes offline from a bundled \href{https://www.geonames.org/}{GeoNames}
+dataset of UK places. It is tested by driving the real, unmodified page in a
+headless browser over WebDriver with the network intercepted, so the whole user
+journey is deterministic and each run records screenshots, a trace and logs.
 
 \projectplain{Hearts of Iorn 4 modding:}
 I'm the owner and contributor to multiple Hearts of Iron 4 mods on the Steam

@@ -41,7 +41,10 @@ produce good output on both paths:
   organisation and, in an `<em>`, the dates. The `\hfill` right-aligns the dates
   in the PDF; pandoc drops it and the stylesheet right-aligns the `<em>` instead.
 - `\project{url}{Title:}` / `\projectplain{Title:}` start a paragraph with a
-  run-in bold title, set with a hanging indent like a bibliography entry.
+  run-in bold title, set with a hanging indent like a bibliography entry. Any
+  paragraph that opens in bold directly under a section gets the same indent.
+- `\setlength`, `\vspace` and the widow and club penalties shape only the PDF;
+  pandoc skips them, and the stylesheet spaces the website's paragraphs.
 - `\begin{center}` becomes the contact block under the name.
 
 `--section-divs` wraps each section and each entry in a `<section>`, which the

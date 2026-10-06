@@ -162,9 +162,10 @@
         font-weight: 400;
       }
 
-      /* Portfolio entries are set like a bibliography: a run-in title and
-         a hanging indent. */
-      #portfolio > p:has(> strong:first-child) {
+      /* Projects are set like a bibliography: a run-in bold title and a
+         hanging indent. Entries from \entry sit in section.level3, so
+         they never match. */
+      section.level2 > p:has(> strong:first-child) {
         margin-bottom: 0.85em;
         padding-left: 1.6em;
         text-indent: -1.6em;
@@ -181,7 +182,7 @@
         text-decoration: underline;
       }
       section.level3 > h3 a,
-      #portfolio > p > strong a {
+      section.level2 > p > strong a {
         color: inherit;
       }
 

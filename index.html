@@ -162,9 +162,10 @@
         font-weight: 400;
       }
 
-      /* Portfolio entries are set like a bibliography: a run-in title and
-         a hanging indent. */
-      #portfolio > p:has(> strong:first-child) {
+      /* Projects are set like a bibliography: a run-in bold title and a
+         hanging indent. Entries from \entry sit in section.level3, so
+         they never match. */
+      section.level2 > p:has(> strong:first-child) {
         margin-bottom: 0.85em;
         padding-left: 1.6em;
         text-indent: -1.6em;
@@ -181,7 +182,7 @@
         text-decoration: underline;
       }
       section.level3 > h3 a,
-      #portfolio > p > strong a {
+      section.level2 > p > strong a {
         color: inherit;
       }
 
@@ -363,64 +364,81 @@
           <a href="https://www.linkedin.com/in/jonathan-wl/"
             >linkedin.com/in/jonathan-wl</a
           >
-          •
-          <a href="https://www.youtube.com/@alittlemorethananintroduct1604"
-            >YouTube</a
-          >
         </p>
       </div>
       <p>
-        I am a PhD student in Physics at the University of York, working on
-        neuromorphic computing for resource-efficient autonomous systems; my
-        thesis is titled ‘Are SNNs more robust?’. This entails investigation of
-        a wide range of AI/ML/RL algorithms and their respective hardware
-        accelerators with particular focus and consideration of neuromorphic
-        hardware and algorithms, and how they compare to more traditional ANNs.
-        I have a specific interest in low level systems and tooling. I am a
-        frequent Open-Source contributor having contributed to ziglang, rustlang
-        and popular Rust crates. I have a small educational YouTube channel
-        where I very infrequently post videos about technical topics I find
-        interesting (<a
-          href="https://www.youtube.com/@alittlemorethananintroduct1604"
-          >A little more than an introduction to – YouTube</a
-        >).
+        PhD student in Physics at the University of York, studying neuromorphic
+        computing and spiking neural networks. Previously I spent two years as a
+        software engineer at Amazon Web Services, on the Firecracker virtual
+        machine monitor which underpins a significant portion of AWS’s
+        serverless services; including AWS Lambda.
       </p>
-      <section id="experience" class="level2">
-        <h2>Experience</h2>
+      <p>
+        An active contributor to open source with expertise in Rust, PyTorch,
+        Python, C, C++, and web development.
+      </p>
+      <section id="research" class="level2 unnumbered">
+        <h2 class="unnumbered">Research</h2>
         <section
-          id="york-universityapril-2025-current"
+          id="university-of-yorkapril-2025-2028-expected"
           class="level3 unnumbered"
         >
           <h3 class="unnumbered">
-            <a href="https://www.york.ac.uk/">York University</a
-            ><em>April 2025 – Current</em>
+            <a href="https://www.york.ac.uk/physics-engineering-technology/"
+              >University of York</a
+            ><em>April 2025 – 2028 (expected)</em>
           </h3>
-          <p><strong>PhD in Physics</strong></p>
           <p>
-            I am currently undertaking a PhD in Physics at the University of
-            York with an idea of a thesis on how spiking neural networks (SNNs)
-            interact with robustness; with the broad thrust of the thesis being
-            to provide a more encompassing answer to the question of whether
-            SNNs are more robust than ANNs.
+            <strong>PhD in Physics, supervised by Prof. Martin Trefzer</strong>
           </p>
           <p>
-            In my exploration of the literature and initial experimentatation I
-            went through multiple iterations of thinking I’d found a novel
-            contribution only to find it had been already done (to varying
-            extents). Through struggling to find an unexplored area, I
-            considered work on contribution of a novel methodology re-running
-            existing experiments under a more structured and equal framework,
-            although I came to think that this claim of a contribution of a
-            novel methodology to justify publication of questionably novel
-            results would seem a strategy of masking a failure to find a truly
-            novel contribution rather than a real contribution to be proud of.
-            In continuing my reading I have tried to focus on narrow,
-            falsifiable claims, eventually settling on an ablation study on the
-            leak and reset paramters of leaky-integrate-and-fire (LIF) neurons
-            in SNNs, analyzing their recurrence properties and how they
-            interaction with different forms of perturbation.
+            The thesis aims to investigate the often reported inherent
+            robustness of spiking neural networks. Treating robustness as a
+            complex profile across kinds of perturbation rather than a single
+            score, and tracing that profile to the network’s mechanisms: the
+            reset, the leak and recurrent connections.
+          </p>
+          <p>
+            The first study isolates the reset, the only nonlinear step in a
+            leaky integrate-and-fire neuron’s recurrent update, which several
+            recent methods remove so that spiking networks can be trained in
+            parallel across time. Small feedforward networks without a leak,
+            identical except for the reset (soft, hard or none), were trained on
+            a synthetic modular-counting task and two spiking speech benchmarks,
+            with the outcome on the counting task predicted in advance from
+            expressivity results for linear recurrences. Results so far suggest
+            that removing the reset costs these networks most of their clean
+            accuracy on all three tasks, and that on Spiking Heidelberg Digits
+            doubling the width of a reset-free network recovers little of it.
+          </p>
+          <p>
+            Robustness is compared between networks at equal clean accuracy,
+            using weights saved during training, across the full range of each
+            perturbation. At equal accuracy on Spiking Heidelberg Digits,
+            networks with a reset appear to keep more of their accuracy when
+            spikes are reversed in time and under an adversarial attack that
+            only moves spikes, implemented from a recent paper; no version leads
+            consistently when spikes are added or deleted. Written up as
+            <em
+              >What Does the Reset Do? An Ablation of the Spiking Reset Under
+              Structured Temporal Perturbation</em
+            >
+            (manuscript in preparation for publication).
+          </p>
+          <p>
+            The code is written in Python with PyTorch, with training and
+            evaluation captured as CUDA graphs. Training is performed using
+            remote GPU instances often running dozens of A100s for short periods
+            to support iterating on my experiment design faster. Sweeping
+            perturbation through inference is done locally with optimizations to
+            load dozens of the networks on the GPU at the same time with CPU
+            workers dynamically generating perturbed samples to then be pushed
+            to the GPU.
           </p>
         </section>
+      </section>
+      <section id="experience" class="level2 unnumbered">
+        <h2 class="unnumbered">Experience</h2>
         <section
           id="amazon-web-servicesapril-2022-june-2024"
           class="level3 unnumbered"
@@ -429,322 +447,161 @@
             <a href="https://aws.amazon.com/">Amazon Web Services</a
             ><em>April 2022 – June 2024</em>
           </h3>
+          <p><strong>Software Development Engineer, Cambridge, UK</strong></p>
           <p>
-            <strong
-              ><a href="https://maps.app.goo.gl/Drok6UA7W5empdoY6">Cambrigde</a>
-              – Software development engineer</strong
-            >
+            Worked on
+            <a href="https://github.com/firecracker-microvm/firecracker"
+              >Firecracker</a
+            >, an open-source virtual machine monitor, written in Rust, that AWS
+            developed for services such as Lambda and Fargate. I reworked
+            Firecracker’s CPUID handling around the separate Intel and AMD
+            specifications, replacing the filtering of host values with a
+            normalisation of what each guest is shown which formed the
+            groundwork for the custom CPU templates released in Firecracker 1.4,
+            which let users adjust the processor features exposed to a guest. I
+            then worked on the safety of restoring snapshots across hosts, with
+            CPUID compatibility checks for Intel hosts, and updated
+            Firecracker’s host-security recommendations for Spectre-like
+            attacks, with a test of a host’s mitigations.
           </p>
           <p>
-            I worked on Firecracker, a memory efficient, fast booting VMM that
-            allows AWS lambda to be profitable.
+            Led an initiative to test Firecracker’s performance in
+            production-like conditions, coordinating across teams to build the
+            test environment; it found significant performance regressions,
+            fixed before they reached production. Added source-level tracing to
+            Firecracker, released in version 1.6: a Rust procedural macro that
+            instruments function’s, with a tool that adds, removes and checks
+            this instrumentation across the codebase.
           </p>
           <p>
-            Firecracker supports snapshotting a VM; a VM can be saved and
-            restored much faster than booting a new one and much faster than any
-            other VMM. I spent time working on the safety and configurability of
-            this feature, this involved evaluating whether a snapshot could be
-            safely restored on a given CPU considering its specified features
-            and security mitigations, and those of the target. This involved
-            analysis of the performance and security effects of CPU features on
-            both x86-64 and aarch64, and ensuring we had an implementation that
-            aligned with the specifications.
+            Took on maintenance work for
+            <a href="https://github.com/rust-vmm">rust-vmm</a>: the open-source
+            organisation of virtualisation components shared by Firecracker,
+            Cloud Hypervisor and other virtual machine monitors. Became one of
+            its gatekeepers, who administer all of its repositories, and wrote
+            its guide to handling security vulnerability disclosures. Created
+            the initiate to move to a mono-repo and updated the CVE management
+            process.
           </p>
-          <p>
-            Firecracker supports a feature called CPU templates that allows a
-            user configurability of most of how the CPU is presented to the
-            guest OS. This work required understanding the Intel x86-64, AMD
-            x86-64 and Arm aarch64 specifications. Development involved thorough
-            discussion with customers and within our team both focused on
-            usability, security and robustness. I rewrote how Firecracker
-            handles static CPU templates to support runtime CPU templates and
-            wrote the foundational implementation for runtime CPU templates. I
-            also implemented thorough compatibility checks for x86-64.
-          </p>
-          <p>
-            I was the owner of an initiative to performance test Firecracker in
-            production-like scenarios, through this we discovered and fixed
-            significant performance regressions that may have costed AWS Lambda
-            millions of dollars if they went live. This work involved
-            coordinating across teams and diving deep into the deployment and
-            management of resources to setup the required environment and
-            execute the useful tests.
-          </p>
-          <p>
-            In this role I and another team member adopted responsibility for
-            maintenance of the
-            <a href="https://github.com/rust-vmm">rust-vmm</a> open source
-            organization that maintained components used by Firecracker and
-            other VMMs such as
-            <a href="https://github.com/cloud-hypervisor/cloud-hypervisor"
-              >cloud-hypervisor</a
-            >.
-          </p>
-        </section>
-        <section
-          id="renishawjuly-2018-september-2018"
-          class="level3 unnumbered"
-        >
-          <h3 class="unnumbered">
-            <a href="https://www.renishaw.com/">Renishaw</a
-            ><em>July 2018 – September 2018</em>
-          </h3>
-          <p>
-            <strong
-              ><a href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
-                >Wotton-under-Edge</a
-              >
-              – Software placement</strong
-            >
-          </p>
-          <p>
-            I worked on building C++ components forming an internal standard
-            library. This involved extensive testing and performance
-            consideration.
-          </p>
-        </section>
-        <section id="renishawa-few-weeks-in-2016" class="level3 unnumbered">
-          <h3 class="unnumbered">
-            <a href="https://www.renishaw.com/">Renishaw</a
-            ><em>A few weeks in 2016</em>
-          </h3>
-          <p>
-            <strong
-              ><a href="https://maps.app.goo.gl/d1S4cdULwPKQcSf98"
-                >Wotton-under-Edge</a
-              >
-              – Work experience</strong
-            >
-          </p>
-          <p>My work experience focused on development with FPGAs and VHDL.</p>
         </section>
       </section>
-      <section id="education" class="level2">
-        <h2>Education</h2>
-        <section id="swansea-university2017-2021" class="level3 unnumbered">
+      <section id="education" class="level2 unnumbered">
+        <h2 class="unnumbered">Education</h2>
+        <section
+          id="swansea-universityseptember-2017-july-2021"
+          class="level3 unnumbered"
+        >
           <h3 class="unnumbered">
             <a href="https://www.swansea.ac.uk/">Swansea University</a
-            ><em>2017 – 2021</em>
-          </h3>
-          <p><strong>MEng Computing &amp; Bachelors 2.1</strong></p>
-          <p>
-            I competed with the university Taekwondo society, at times
-            internationally.
-          </p>
-        </section>
-        <section
-          id="brighton-and-hove-sixth-form-college2015-2017"
-          class="level3 unnumbered"
-        >
-          <h3 class="unnumbered">
-            <a href="https://www.bhasvic.ac.uk/"
-              >Brighton and Hove Sixth Form College</a
-            ><em>2015 – 2017</em>
+            ><em>September 2017 – July 2021</em>
           </h3>
           <p>
             <strong
-              >A levels – Mathematics: B, Modern History: B, Computer Science:
-              C</strong
+              >Master of Engineering in Computing (Second Class Honours,
+              Division One)</strong
             >
           </p>
           <p>
-            I did an Extended Project Qualification discussing the question ‘Is
-            the development and completion of an AGI (Artificial General
-            Intelligence) likely within the next 80 years?’.
-          </p>
-        </section>
-        <section id="st-andrews-high-school2011-2015" class="level3 unnumbered">
-          <h3 class="unnumbered">
-            <a
-              href="https://en.wikipedia.org/wiki/St_Andrew%27s_High_School,_Worthing"
-              >St Andrew’s High School</a
-            ><em>2011 – 2015</em>
-          </h3>
-          <p>
-            <strong>GCSEs 11 A*–C including mathematics and english</strong>
-          </p>
-          <p>
-            I founded the computing club, the debating club and was elected
-            deputy head boy by students.
+            Third-year dissertation on recognising handwritten mathematical
+            expressions, using
+            <a href="https://github.com/JonathanWoollett-Light/cogent">Cogent</a
+            >, a small neural-network library written in Rust for the purpose.
+            Final-year project:
+            <a href="https://github.com/JonathanWoollett-Light/GLSL-BLAS"
+              >GLSL-BLAS</a
+            >, single- and double-precision BLAS routines, from vector
+            operations to matrix multiplication, as Vulkan compute shaders with
+            reductions built from subgroup operations and shared memory, and an
+            animated
+            <a href="https://jonathanwoollett-light.github.io/BLAS/"
+              >reference site</a
+            >
+            for the routines.
           </p>
         </section>
       </section>
-      <section id="portfolio" class="level2">
-        <h2>Portfolio</h2>
+      <section id="projects" class="level2 unnumbered">
+        <h2 class="unnumbered">Projects</h2>
         <p>
-          I am an expert in Rust, I am experienced in C++, C and Python, and I
-          am familiar with Zig, Ada, aarch64 asm, RISC-V asm, JavaScript and
-          CSS3+HTML5.
+          With more than 200 of my own repositories on GitHub, this is just a
+          small selection.
         </p>
         <p>
           <strong
             ><a href="https://jonathanwoollett-light.github.io/formal/"
-              >My programming language:</a
+              >formal</a
             ></strong
           >
-          A verifying compiler for bare-metal RISC-V, written in Rust. You write
-          a small Python-like language, and the compiler accepts your program
-          only if it can prove (by symbolically executing the actual machine
-          code across every hardware-thread interleaving and every admissible
-          type assignment) that no assertion can fail and no memory access is
-          ever out of bounds, even for intentionally racy, lock-free code. Its
-          type inference is complete, or ‘infallible’: a variable left
-          unspecified is accepted exactly when some typing makes the whole
-          program verify, because inference and verification are the same
-          search. The proof’s by-products then drive code generation: it infers
-          the memory layout and performs dead-data elimination, deleting
-          interior bytes of live data it proved are never touched at runtime and
-          rewriting the address arithmetic to match. It verifies the
-          instructions themselves rather than high-level source, shrinking the
-          trusted base to a small layout-only lowering plus the assembler and
-          linker; conceptually it generalises Zig’s concrete compile-time
-          evaluation to full symbolic exploration and turns Rust’s conservative
-          data-race prohibition into exact, per-assertion race verification,
-          with parallel and distributed (MPI) verifiers checked against a
-          trusted single-threaded oracle. (<a
-            href="https://github.com/JonathanWoollett-Light/formal"
-            >source</a
-          >)
-        </p>
-        <p>
-          <strong>CV website:</strong> A simple website serving the latest
-          version of my curriculum vitae. Written in LaTeX and rendered to a
-          single self-contained page: a near-perfect Google Lighthouse score,
-          light and dark mode support, less than 100kb in size, and neatly
-          prints to PDF.
-        </p>
-        <p>
-          <strong><a href="https://byrig.uk/">Property search:</a></strong> A
-          rental property search tool that scrapes Rightmove and ranks listings
-          against weighted preferences for distance, price, size and ‘vibe’, the
-          last elicited by pairwise voting scored with Glicko-2. It is a single
-          self-contained HTML page with no backend: floor area is read out of
-          the floorplan image by
-          <a href="https://huggingface.co/vikhyatk/moondream2">Moondream2</a>, a
-          vision-language model running in the browser through
-          <a href="https://huggingface.co/docs/transformers.js"
-            >Transformers.js</a
-          >
-          and WebGPU, falling back to Tesseract OCR where WebGPU is unavailable,
-          and the location box autocompletes offline from a bundled
-          <a href="https://www.geonames.org/">GeoNames</a> dataset of UK places.
-          It is tested by driving the real, unmodified page in a headless
-          browser over WebDriver with the network intercepted, so the whole user
-          journey is deterministic and each run records screenshots, a trace and
-          logs.
-        </p>
-        <p>
-          <strong>Hearts of Iorn 4 modding:</strong> I’m the owner and
-          contributor to multiple Hearts of Iron 4 mods on the Steam Workshop
-          (<a
-            href="https://steamcommunity.com/sharedfiles/filedetails/?id=3342313594"
-            >OWB – The Think Tank</a
-          >
-          and
-          <a
-            href="https://steamcommunity.com/sharedfiles/filedetails/?id=2777392649&amp;searchtext="
-            >Millennium Dawn: A Modern Day Mod</a
-          >). Working with mods and the often non-technical people making them
-          requires a uniquely scrappy approach to development and a lack of
-          hangups on formal processes (being able to work within what might
-          politely be described as a <em>mess</em>), certainly a mindset shift
-          from my traditional systems development.
-        </p>
-        <p>
-          <strong>Dating app:</strong> A dating app that learns user specific
-          traits and preferences to match pairs. The server functions as an
-          efficient monolith capable of handling all requests on a single Rust
-          <a href="https://github.com/tokio-rs/axum">Axum</a> server with
-          in-memory stores and a local SQL store, achieving near 100% system
-          utilisation capable of handling millions of users; supporting all the
-          functionality of a typical tinder-like dating app.
+          (2024–present): an experimental verifying compiler for bare-metal
+          RISC-V, written in Rust. It accepts a program only if it can prove, by
+          symbolically executing the machine code across every interleaving of
+          hardware threads, that no assertion can fail and no memory access is
+          out of bounds. Type inference is part of the same search, so a
+          variable left untyped is accepted exactly when some typing makes the
+          program verify. An infallible type system in a procedural programming
+          language with formal verification.
         </p>
         <p>
           <strong
             ><a href="https://github.com/ci-metrics/example"
-              >CI Metrics:</a
+              >CI Metrics</a
             ></strong
           >
-          A website to track performance metrics (continuous benchmarking) and
-          integrate with GitHub. A Rust
-          <a href="https://github.com/tokio-rs/axum">Axum</a> backend with a
-          MongoDB database. Development focussed on experimentation with
-          algorithms for anomaly detection to produce a solution that
-          accomplishes what
-          <a href="https://aws.amazon.com/lookout-for-metrics/"
-            >AWS Lookout for Metrics</a
+          (2023–2024): a service, similar to Codecov, that tracks any metric
+          produced in continuous integration, such as benchmark timings, and
+          reports how each pull request changes it, prompted by the performance
+          testing of Firecracker. A Rust backend (Axum, MongoDB), a GitHub
+          Actions integration and a Rust SDK, with experiments in anomaly
+          detection for flagging regressions in noisy measurements.
+        </p>
+        <p>
+          <strong><a href="https://github.com/nix-rust/nix">nix</a></strong>
+          (2022–2023): contributions to the Rust bindings to Unix system
+          interfaces, chiefly typed wrappers for epoll and eventfd and the move
+          of several system calls to Rust’s I/O-safety model.
+        </p>
+        <p>
+          <strong><a href="https://byrig.uk/">Property search</a></strong>
+          (2026): a rental-search page that reads floor area from floorplan
+          images with a vision-language model running in the browser, and ranks
+          listings by weighted preferences, including a subjective score
+          estimated from pairwise votes with the Glicko-2 rating system.
+        </p>
+        <p>
+          <strong>Neural networks from first principles</strong> (2020–2024):
+          <a href="https://github.com/JonathanWoollett-Light/rust-ad">rust-ad</a
+          >, an early prototype that generates forward- and reverse-mode
+          derivatives of straight-line Rust functions at compile time, and an
+          <a href="https://www.youtube.com/@alittlemorethananintroduct1604"
+            >animated video series</a
           >
-          does, but at a much lower cost and complexity. This was motivated by
-          my experience working on
-          <a href="https://github.com/firecracker-microvm/firecracker"
-            >Firecracker</a
+          deriving the mathematics of neural networks.
+        </p>
+        <p>
+          <strong>Hearts of Iron IV modding</strong> (2024–present): creator of
+          <a
+            href="https://steamcommunity.com/sharedfiles/filedetails/?id=3342313594"
+            >The Think Tank</a
           >
-          at AWS where regressions that could have cost millions in production
-          were almost missed, and certainly some were.
+          and
+          <a
+            href="https://steamcommunity.com/sharedfiles/filedetails/?id=3798403425"
+            >Rising Tide</a
+          >, both for the Old World Blues mod; a developer on
+          <a
+            href="https://steamcommunity.com/sharedfiles/filedetails/?id=2777392649"
+            >Millennium Dawn</a
+          >, a large modern-day mod built by a volunteer team; and author of
+          <a href="https://github.com/JonathanWoollett-Light/hearty">hearty</a>,
+          a formatter and linter for the game’s script files, written in Rust.
+          The work means coordinating design and releases with volunteer, often
+          non-technical contributors, with little formal process.
         </p>
         <p>
-          <strong>Live migration web server:</strong> A Rust server framework
-          where a new server process can succeed a local old process in
-          milliseconds with shared memory (or remotely in seconds over TCP)
-          without dropping client streams. This can be used as a database server
-          with in-memory data storage akin to Redis where queries are compiled
-          as new functions.
-        </p>
-        <p>
-          <strong
-            ><a href="https://github.com/JonathanWoollett-Light/rust-ad"
-              >RUST-AD:</a
-            ></strong
-          >
-          Auto-differentiation library with code transformation for both forward
-          and reverse auto-diff written in Rust.
-        </p>
-        <p>
-          <strong>Mathematics Site:</strong> A mathematics website for automated
-          marking. Built with a Rust
-          <a href="https://github.com/actix/actix-web">Actix</a> backend using a
-          PyTorch semantic segmentation model, deployed with AWS, with a MongoDB
-          database.
-        </p>
-        <p>
-          <strong
-            ><a href="https://github.com/JonathanWoollett-Light/GLSL-BLAS"
-              >GLSL BLAS:</a
-            ></strong
-          >
-          GLSL code for non-complex BLAS operations with Vulkan. My final year
-          masters project. Using modern C++ compile-time evaluation to validate
-          shaders.
-        </p>
-        <p>
-          <strong
-            ><a href="https://jonathanwoollett-light.github.io/BLAS/"
-              >BLAS website:</a
-            ></strong
-          >
-          A website documenting BLAS operations. While working on GLSL BLAS I
-          found
-          <a href="https://www.netlib.org/blas/">the older website</a> used to
-          document BLAS to be a little uncomfortable, so I made this. I’ve also
-          added some Python
-          <a href="https://www.manim.community/">Manim</a> animations to
-          illustrate the operations.
-        </p>
-        <p>
-          <strong
-            ><a href="https://github.com/JonathanWoollett-Light/cogent"
-              >Cogent:</a
-            ></strong
-          >
-          A simple library Rust library using
-          <a href="https://arrayfire.com/">ArrayFire</a> for training simple
-          neural networks; like a small Keras. A component of my final year
-          bachelors project.
-        </p>
-        <p>
-          <strong>Genetic Draughts AI:</strong> My first ever venture into
-          machine learning and optimisation. A simple tree C++ search program to
-          play draughts using a genetic algorithm to judge board positions. I
+          <strong>Genetic Draughts AI</strong> (2017): my first venture into
+          machine learning and optimisation, a C++ program that plays draughts
+          by searching the game tree and judging positions with an evaluation
+          function evolved through tournaments between candidate players. I
           still remember the moment it beat me.
         </p>
       </section>

@@ -367,15 +367,16 @@
         </p>
       </div>
       <p>
-        PhD student in Physics at the University of York, studying neuromorphic
-        computing and spiking neural networks. Previously I spent two years as a
-        software engineer at Amazon Web Services, on the Firecracker virtual
-        machine monitor which underpins a significant portion of AWS’s
-        serverless services; including AWS Lambda.
+        I am a PhD student in Physics at the University of York, studying
+        neuromorphic computing and spiking neural networks. Before that, I spent
+        two years as a software engineer at Amazon Web Services, on the
+        Firecracker virtual machine monitor, which underpins a significant
+        portion of AWS’s serverless services, including AWS Lambda.
       </p>
       <p>
-        An active contributor to open source with expertise in Rust, PyTorch,
-        Python, C, C++, and web development.
+        An active contributor to open source, I have expertise in Rust, PyTorch,
+        Python, C, C++ and JavaScript, and experience of GPU programming in CUDA
+        and GLSL.
       </p>
       <section id="research" class="level2 unnumbered">
         <h2 class="unnumbered">Research</h2>
@@ -392,11 +393,11 @@
             <strong>PhD in Physics, supervised by Prof. Martin Trefzer</strong>
           </p>
           <p>
-            The thesis aims to investigate the often reported inherent
-            robustness of spiking neural networks. Treating robustness as a
-            complex profile across kinds of perturbation rather than a single
-            score, and tracing that profile to the network’s mechanisms: the
-            reset, the leak and recurrent connections.
+            The thesis investigates the often-reported inherent robustness of
+            spiking neural networks, treating robustness as a complex profile
+            across kinds of perturbation rather than a single score, and tracing
+            that profile to the networks’ mechanisms: the reset, the leak and
+            recurrent connections.
           </p>
           <p>
             The first study isolates the reset, the only nonlinear step in a
@@ -423,17 +424,22 @@
               >What Does the Reset Do? An Ablation of the Spiking Reset Under
               Structured Temporal Perturbation</em
             >
-            (manuscript in preparation for publication).
+            (manuscript in preparation for publication;
+            <a
+              href="https://jonathanwoollett-light.github.io/cv/incc-2027-abstract.pdf"
+              >extended abstract</a
+            >).
           </p>
           <p>
             The code is written in Python with PyTorch, with training and
-            evaluation captured as CUDA graphs. Training is performed using
-            remote GPU instances often running dozens of A100s for short periods
-            to support iterating on my experiment design faster. Sweeping
-            perturbation through inference is done locally with optimizations to
-            load dozens of the networks on the GPU at the same time with CPU
-            workers dynamically generating perturbed samples to then be pushed
-            to the GPU.
+            evaluation captured as CUDA graphs. Training runs on remote GPU
+            instances, often dozens of A100s for short periods, so the
+            experiment design can be iterated on quickly, and Bayesian
+            optimisation (Ax and BoTorch) was used to explore the space of
+            hyperparameters and candidate network topologies. Perturbation
+            sweeps run locally, with dozens of networks loaded on the GPU at
+            once and CPU workers generating perturbed samples on the fly to feed
+            it.
           </p>
         </section>
       </section>
@@ -449,39 +455,39 @@
           </h3>
           <p><strong>Software Development Engineer, Cambridge, UK</strong></p>
           <p>
-            Worked on
+            I worked on
             <a href="https://github.com/firecracker-microvm/firecracker"
               >Firecracker</a
             >, an open-source virtual machine monitor, written in Rust, that AWS
-            developed for services such as Lambda and Fargate. I reworked
-            Firecracker’s CPUID handling around the separate Intel and AMD
-            specifications, replacing the filtering of host values with a
-            normalisation of what each guest is shown which formed the
-            groundwork for the custom CPU templates released in Firecracker 1.4,
-            which let users adjust the processor features exposed to a guest. I
-            then worked on the safety of restoring snapshots across hosts, with
+            developed for services such as Lambda and Fargate, starting with a
+            rework of its CPUID handling around the separate Intel and AMD
+            specifications. Replacing the filtering of host values with a
+            normalisation of what each guest is shown laid the groundwork for
+            the custom CPU templates released in Firecracker 1.4, which let
+            users adjust the processor features exposed to a guest. I later
+            worked on the safety of restoring snapshots across hosts, writing
             CPUID compatibility checks for Intel hosts, and updated
             Firecracker’s host-security recommendations for Spectre-like
             attacks, with a test of a host’s mitigations.
           </p>
           <p>
-            Led an initiative to test Firecracker’s performance in
+            I led an initiative to test Firecracker’s performance in
             production-like conditions, coordinating across teams to build the
             test environment; it found significant performance regressions,
-            fixed before they reached production. Added source-level tracing to
-            Firecracker, released in version 1.6: a Rust procedural macro that
-            instruments function’s, with a tool that adds, removes and checks
-            this instrumentation across the codebase.
+            which were fixed before they reached production. I also added
+            source-level tracing, released in Firecracker 1.6: a Rust procedural
+            macro that instruments functions, with a tool that adds, removes and
+            checks this instrumentation across the codebase.
           </p>
           <p>
-            Took on maintenance work for
-            <a href="https://github.com/rust-vmm">rust-vmm</a>: the open-source
+            I took on maintenance work for
+            <a href="https://github.com/rust-vmm">rust-vmm</a>, the open-source
             organisation of virtualisation components shared by Firecracker,
-            Cloud Hypervisor and other virtual machine monitors. Became one of
-            its gatekeepers, who administer all of its repositories, and wrote
-            its guide to handling security vulnerability disclosures. Created
-            the initiate to move to a mono-repo and updated the CVE management
-            process.
+            Cloud Hypervisor and other virtual machine monitors, and became one
+            of its gatekeepers, who administer all of its repositories. In that
+            role I wrote its guide to handling security vulnerability
+            disclosures, started the initiative to move it to a monorepo and
+            updated its CVE management process.
           </p>
         </section>
       </section>
@@ -534,12 +540,12 @@
           >
           (2024–present): an experimental verifying compiler for bare-metal
           RISC-V, written in Rust. It accepts a program only if it can prove, by
-          symbolically executing the machine code across every interleaving of
-          hardware threads, that no assertion can fail and no memory access is
-          out of bounds. Type inference is part of the same search, so a
-          variable left untyped is accepted exactly when some typing makes the
-          program verify. An infallible type system in a procedural programming
-          language with formal verification.
+          symbolically executing the machine code in parallel across every
+          interleaving of hardware threads, that no assertion can fail and no
+          memory access is out of bounds. Type inference is part of the same
+          search, so a variable left untyped is accepted exactly when some
+          typing makes the program verify. An infallible type system in a
+          procedural programming language with formal verification.
         </p>
         <p>
           <strong
@@ -547,11 +553,11 @@
               >CI Metrics</a
             ></strong
           >
-          (2023–2024): a service, similar to Codecov, that tracks any metric
-          produced in continuous integration, such as benchmark timings, and
-          reports how each pull request changes it, prompted by the performance
-          testing of Firecracker. A Rust backend (Axum, MongoDB), a GitHub
-          Actions integration and a Rust SDK, with experiments in anomaly
+          (2023–2024): a prototype of a service, similar to Codecov, that tracks
+          metrics produced in continuous integration, such as benchmark timings,
+          and reports how each pull request changes it, prompted by the
+          performance testing of Firecracker. A Rust backend (Axum, MongoDB), a
+          GitHub Actions integration and a Rust SDK, with experiments in anomaly
           detection for flagging regressions in noisy measurements.
         </p>
         <p>

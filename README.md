@@ -10,6 +10,7 @@ page: <https://jonathanwoollett-light.github.io/cv/>
 | `cv.tex`             | **The source of truth.** All content lives here.                 |
 | `build/template.html`| Page chrome: the stylesheet, theme toggle and print button.      |
 | `index.html`         | **Generated.** Committed because GitHub Pages serves it directly.|
+| `incc-2027-abstract.pdf` | The INCC 2027 extended abstract, linked from `cv.tex`; kept by a `.gitignore` exception. |
 
 `index.html` is generated from `cv.tex`. Do not edit it by hand; run the build.
 

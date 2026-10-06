@@ -76,22 +76,22 @@ York, United Kingdom \textbullet{}
 \href{https://www.linkedin.com/in/jonathan-wl/}{linkedin.com/in/jonathan-wl}
 \end{center}
 
-PhD student in Physics at the University of York, studying neuromorphic computing
-and spiking neural networks. Previously I spent two years as a software engineer
-at Amazon Web Services, on the Firecracker virtual machine monitor which
-underpins a significant portion of AWS's serverless services; including AWS
-Lambda.
+I am a PhD student in Physics at the University of York, studying neuromorphic
+computing and spiking neural networks. Before that, I spent two years as a
+software engineer at Amazon Web Services, on the Firecracker virtual machine
+monitor, which underpins a significant portion of AWS's serverless services,
+including AWS Lambda.
 
-An active contributor to open source with expertise in Rust, PyTorch, Python,
-C, C++, and web development.
+An active contributor to open source, I have expertise in Rust, PyTorch, Python,
+C, C++ and JavaScript, and experience of GPU programming in CUDA and GLSL.
 
 \section*{Research}
 
 \entry{https://www.york.ac.uk/physics-engineering-technology/}{University of York}{April 2025 -- 2028 (expected)}{PhD in Physics, supervised by Prof.~Martin Trefzer}
-The thesis aims to investigate the often reported inherent robustness of spiking
-neural networks. Treating robustness as a complex profile across kinds
-of perturbation rather than a single score, and tracing that profile to the
-network's mechanisms: the reset, the leak and recurrent connections.
+The thesis investigates the often-reported inherent robustness of spiking neural
+networks, treating robustness as a complex profile across kinds of perturbation
+rather than a single score, and tracing that profile to the networks'
+mechanisms: the reset, the leak and recurrent connections.
 
 The first study isolates the reset, the only nonlinear step in a leaky
 integrate-and-fire neuron's recurrent update, which several recent methods
@@ -111,44 +111,45 @@ of their accuracy when spikes are reversed in time and under an adversarial
 attack that only moves spikes, implemented from a recent paper; no version leads
 consistently when spikes are added or deleted. Written up as \emph{What Does the
 Reset Do? An Ablation of the Spiking Reset Under Structured Temporal
-Perturbation} (manuscript in preparation for publication).
+Perturbation} (manuscript in preparation for publication;
+\href{https://jonathanwoollett-light.github.io/cv/incc-2027-abstract.pdf}{extended abstract}).
 
 The code is written in Python with PyTorch, with training and evaluation
-captured as CUDA graphs. Training is performed using remote GPU instances often
-running dozens of A100s for short periods to support iterating on my experiment
-design faster. Sweeping perturbation through inference is done locally with
-optimizations to load dozens of the networks on the GPU at the same time with
-CPU workers dynamically generating perturbed samples to then be pushed to the
-GPU.
+captured as CUDA graphs. Training runs on remote GPU instances, often dozens of
+A100s for short periods, so the experiment design can be iterated on quickly,
+and Bayesian optimisation (Ax and BoTorch) was used to explore the space of
+hyperparameters and candidate network topologies. Perturbation sweeps run
+locally, with dozens of networks loaded on the GPU at once and CPU workers
+generating perturbed samples on the fly to feed it.
 
 \section*{Experience}
 
 \entry{https://aws.amazon.com/}{Amazon Web Services}{April 2022 -- June 2024}{Software Development Engineer, Cambridge, UK}
-Worked on
+I worked on
 \href{https://github.com/firecracker-microvm/firecracker}{Firecracker}, an
 open-source virtual machine monitor, written in Rust, that AWS developed for
-services such as Lambda and Fargate. I reworked Firecracker's CPUID handling
-around the separate Intel and AMD specifications, replacing the filtering of
-host values with a normalisation of what each guest is shown which formed the
-groundwork for the custom CPU templates released in Firecracker 1.4, which let
-users adjust the processor features exposed to a guest. I then worked on the
-safety of restoring snapshots across hosts, with CPUID compatibility checks for
-Intel hosts, and updated Firecracker's host-security recommendations for
-Spectre-like attacks, with a test of a host's mitigations.
+services such as Lambda and Fargate, starting with a rework of its CPUID
+handling around the separate Intel and AMD specifications. Replacing the
+filtering of host values with a normalisation of what each guest is shown laid
+the groundwork for the custom CPU templates released in Firecracker 1.4, which
+let users adjust the processor features exposed to a guest. I later worked on
+the safety of restoring snapshots across hosts, writing CPUID compatibility
+checks for Intel hosts, and updated Firecracker's host-security recommendations
+for Spectre-like attacks, with a test of a host's mitigations.
 
-Led an initiative to test Firecracker's performance in production-like
+I led an initiative to test Firecracker's performance in production-like
 conditions, coordinating across teams to build the test environment; it found
-significant performance regressions, fixed before they reached production.
-Added source-level tracing to Firecracker, released in version 1.6: a
-Rust procedural macro that instruments function's, with a tool that
-adds, removes and checks this instrumentation across the codebase.
+significant performance regressions, which were fixed before they reached
+production. I also added source-level tracing, released in Firecracker 1.6: a
+Rust procedural macro that instruments functions, with a tool that adds, removes
+and checks this instrumentation across the codebase.
 
-Took on maintenance work for \href{https://github.com/rust-vmm}{rust-vmm}:
-the open-source organisation of virtualisation components shared by
-Firecracker, Cloud Hypervisor and other virtual machine monitors. Became one of
-its gatekeepers, who administer all of its repositories, and wrote its guide to
-handling security vulnerability disclosures. Created the initiate to move to a
-mono-repo and updated the CVE management process.
+I took on maintenance work for \href{https://github.com/rust-vmm}{rust-vmm}, the
+open-source organisation of virtualisation components shared by Firecracker,
+Cloud Hypervisor and other virtual machine monitors, and became one of its
+gatekeepers, who administer all of its repositories. In that role I wrote its
+guide to handling security vulnerability disclosures, started the initiative to
+move it to a monorepo and updated its CVE management process.
 
 \section*{Education}
 
@@ -170,7 +171,8 @@ With more than 200 of my own repositories on GitHub, this is just a small select
 \project{https://jonathanwoollett-light.github.io/formal/}{formal}
 (2024--present): an experimental verifying compiler for bare-metal RISC-V,
 written in Rust. It accepts a program only if it can prove, by symbolically
-executing the machine code across every interleaving of hardware threads, that
+executing the machine code in parallel across every interleaving of hardware
+threads, that
 no assertion can fail and no memory access is out of bounds. Type inference is
 part of the same search, so a variable left untyped is accepted exactly when
 some typing makes the program verify. An infallible type system in a procedural

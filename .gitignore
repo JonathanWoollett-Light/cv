@@ -9,3 +9,6 @@ node_modules/
 *.pdf
 *.synctex.gz
 *.toc
+
+# The published INCC 2027 extended abstract, linked from cv.tex, is not a build artefact.
+!incc-2027-abstract.pdf

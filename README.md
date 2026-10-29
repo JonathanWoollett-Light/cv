@@ -44,8 +44,15 @@ produce good output on both paths:
 - `\project{url}{Title:}` / `\projectplain{Title:}` start a paragraph with a
   run-in bold title, set with a hanging indent like a bibliography entry. Any
   paragraph that opens in bold directly under a section gets the same indent.
+- `itemize` under an entry becomes a `<ul>`. pandoc wraps each item's text in a
+  `<p>`, which the stylesheet sets without paragraph spacing; `enumitem`'s
+  `\setlist` spaces the bullets in the PDF.
 - `\setlength`, `\vspace` and the widow and club penalties shape only the PDF;
   pandoc skips them, and the stylesheet spaces the website's paragraphs.
+- The PDF is set for clean text extraction by applicant tracking systems: T1
+  fonts (`fontenc`, `lmodern`), no hyphenation (`hyphenat`) so no word is split
+  across a line break, and ragged right (`ragged2e`) in place of justification.
+  pandoc skips `\usepackage`, so none of this reaches the website.
 - `\begin{center}` becomes the contact block under the name.
 
 `--section-divs` wraps each section and each entry in a `<section>`, which the

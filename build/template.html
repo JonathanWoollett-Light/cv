@@ -161,6 +161,19 @@
         font-style: italic;
         font-weight: 400;
       }
+      /* The bullets under an entry, from itemize in cv.tex: set like
+         body copy, close together as enumitem sets them in the PDF.
+         pandoc wraps each item's text in a <p>. */
+      section.level3 ul {
+        margin: 0.3em 0 0.6em;
+        padding-left: 1.4em;
+      }
+      section.level3 li {
+        margin: 0 0 0.25em;
+      }
+      section.level3 li > p {
+        margin: 0;
+      }
 
       /* Projects are set like a bibliography: a run-in bold title and a
          hanging indent. Entries from \entry sit in section.level3, so

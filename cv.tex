@@ -12,7 +12,26 @@
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[margin=2.2cm]{geometry}
-\usepackage[hidelinks]{hyperref}
+
+% The PDF is read by applicant tracking systems as well as people, so it
+% is set for clean text extraction. T1 fonts map every glyph to Unicode,
+% and with hyphenation off no word is split across a line break in the
+% extracted text. Justification needs hyphenation to space evenly, so
+% the text is set ragged right instead. pandoc skips \usepackage; the
+% stylesheet sets the website's typography.
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[none]{hyphenat}
+\usepackage[document]{ragged2e}
+% Without hyphenation a line may have no good break; the extra stretch
+% lets TeX set it short rather than overflow the margin.
+\setlength{\emergencystretch}{3em}
+
+% Compact bullets under each entry, in the PDF only.
+\usepackage{enumitem}
+\setlist[itemize]{topsep=2pt,itemsep=2pt,parsep=0pt,leftmargin=1.4em}
+
+\usepackage[hidelinks,pdftitle={Jonathan Woollett-Light CV},pdfauthor={Jonathan Woollett-Light}]{hyperref}
 
 % Block paragraphs (no first-line indent, a small gap between paragraphs)
 % in the PDF only. pandoc skips \setlength; the stylesheet spaces
@@ -67,93 +86,116 @@
 \vspace{-4em}
 
 \begin{center}
+\textbf{Software Engineer (Rust, Systems) \textbullet{} Machine Learning Researcher}
+\\
 York, United Kingdom \textbullet{}
 +44 7941 079483 \textbullet{}
 \href{mailto:jonathanwoollettlight@proton.me}{jonathanwoollettlight@proton.me}
 \\
+\href{https://jonathanwoollettlight.dev/}{jonathanwoollettlight.dev}
+\textbullet{}
 \href{https://github.com/JonathanWoollett-Light}{github.com/JonathanWoollett-Light}
 \textbullet{}
 \href{https://www.linkedin.com/in/jonathan-wl/}{linkedin.com/in/jonathan-wl}
 \end{center}
 
-I am a PhD student in Physics at the University of York, studying neuromorphic
-computing and spiking neural networks. Before that, I spent two years as a
-software engineer at Amazon Web Services, on the Firecracker virtual machine
-monitor, which underpins a significant portion of AWS's serverless services,
-including AWS Lambda.
-
-An active contributor to open source, I have expertise in Rust, PyTorch, Python,
-C, C++ and JavaScript, and experience of GPU programming in CUDA and GLSL.
-
-\section*{Research}
-
-\entry{https://www.york.ac.uk/physics-engineering-technology/}{University of York}{April 2025 -- 2028 (expected)}{PhD in Physics, supervised by Prof.~Martin Trefzer}
-The thesis investigates the often-reported inherent robustness of spiking neural
-networks, treating robustness as a complex profile across kinds of perturbation
-rather than a single score, and tracing that profile to the networks'
-mechanisms: the reset, the leak and recurrent connections.
-
-The first study isolates the reset, the only nonlinear step in a leaky
-integrate-and-fire neuron's recurrent update, which several recent methods
-remove so that spiking networks can be trained in parallel across time. Small
-feedforward networks without a leak, identical except for the reset (soft, hard
-or none), were trained on a synthetic modular-counting task and two spiking
-speech benchmarks, with the outcome on the counting task predicted in advance
-from expressivity results for linear recurrences. Results so far suggest that
-removing the reset costs these networks most of their clean accuracy on all
-three tasks, and that on Spiking Heidelberg Digits doubling the width of a
-reset-free network recovers little of it.
-
-Robustness is compared between networks at equal clean accuracy, using weights
-saved during training, across the full range of each perturbation. At equal
-accuracy on Spiking Heidelberg Digits, networks with a reset appear to keep more
-of their accuracy when spikes are reversed in time and under an adversarial
-attack that only moves spikes, implemented from a recent paper; no version leads
-consistently when spikes are added or deleted. Written up as \emph{What Does the
-Reset Do? An Ablation of the Spiking Reset Under Structured Temporal
-Perturbation} (manuscript in preparation for publication;
-\href{https://jonathanwoollett-light.github.io/cv/incc-2027-abstract.pdf}{extended abstract}).
-
-The code is written in Python with PyTorch, with training and evaluation
-captured as CUDA graphs. Training runs on remote GPU instances, often dozens of
-A100s for short periods, so the experiment design can be iterated on quickly,
-and Bayesian optimisation (Ax and BoTorch) was used to explore the space of
-hyperparameters and candidate network topologies. Perturbation sweeps run
-locally, with dozens of networks loaded on the GPU at once and CPU workers
-generating perturbed samples on the fly to feed it.
+I am a software engineer and a PhD researcher in neuromorphic computing at the
+University of York, where I study the robustness of spiking neural networks,
+training them with PyTorch on cloud GPUs. Before that, I spent two years at
+Amazon Web Services on Firecracker, the open-source Rust virtual machine monitor
+behind AWS Lambda and Fargate, and became a gatekeeper of rust-vmm, the
+virtualisation components shared by Firecracker, Cloud Hypervisor and other
+virtual machine monitors.
 
 \section*{Experience}
 
-\entry{https://aws.amazon.com/}{Amazon Web Services}{April 2022 -- June 2024}{Software Development Engineer, Cambridge, UK}
-I worked on
-\href{https://github.com/firecracker-microvm/firecracker}{Firecracker}, an
+\entry{https://www.york.ac.uk/physics-engineering-technology/}{University of York}{April 2025 -- present}{PhD Researcher in Neuromorphic Computing, supervised by Prof.~Martin Trefzer}
+Research into whether spiking neural networks are more robust than non-spiking
+networks, and if so how and why, measuring robustness as a profile across kinds
+of perturbation and tracing it to the networks' mechanisms: the reset, the leak
+and recurrent connections.
+\begin{itemize}
+\item Designed an ablation of the leak and the spiking reset, which parallel
+  spiking neurons remove so that every timestep can be computed at once by a
+  parallel scan, with the outcome on a modular-counting task predicted in
+  advance from expressivity results for linear recurrences.
+\item Found that a feedforward network with neither a leak nor a reset loses 42
+  points of accuracy on Spiking Heidelberg Digits and sends about three times as
+  many spikes, and that a leak recovers that accuracy.
+\item Compared the networks at equal clean accuracy across the full range of five
+  spike perturbations: the reset protects against perturbations that move spikes
+  only when the leak is removed, and the leak, rather than the reset, appears to
+  decide what a network keeps.
+\item Built the experiment pipeline in Python and PyTorch: training and
+  evaluation captured as CUDA graphs, training on short-lived fleets of up to
+  dozens of cloud GPUs, Bayesian optimisation (Ax and BoTorch) over
+  hyperparameters and network topologies, and sweeps that evaluate dozens of
+  networks on one GPU at once, analysed with paired bootstrap confidence bands
+  and mixed-effects models.
+\end{itemize}
+
+\entry{https://aws.amazon.com/}{Amazon Web Services}{April 2022 -- June 2024}{Software Development Engineer, Firecracker, Cambridge, UK}
+\href{https://github.com/firecracker-microvm/firecracker}{Firecracker} is the
 open-source virtual machine monitor, written in Rust, that AWS developed for
-services such as Lambda and Fargate, starting with a rework of its CPUID
-handling around the separate Intel and AMD specifications. Replacing the
-filtering of host values with a normalisation of what each guest is shown laid
-the groundwork for the custom CPU templates released in Firecracker 1.4, which
-let users adjust the processor features exposed to a guest. I later worked on
-the safety of restoring snapshots across hosts, writing CPUID compatibility
-checks for Intel hosts, and updated Firecracker's host-security recommendations
-for Spectre-like attacks, with a test of a host's mitigations.
+serverless services such as Lambda and Fargate.
+\begin{itemize}
+\item Reworked Firecracker's CPUID handling around the separate Intel and AMD
+  specifications, replacing the filtering of host values with a normalisation of
+  what each guest is shown; this laid the groundwork for the custom CPU
+  templates released in Firecracker 1.4, which let users adjust the processor
+  features exposed to a guest.
+\item Wrote CPUID compatibility checks for Intel hosts, so that snapshots
+  restore safely across hosts.
+\item Updated Firecracker's host-security recommendations for Spectre-like
+  side-channel attacks, with a test of a host's mitigations.
+\item Led an initiative to test Firecracker's performance in production-like
+  conditions, coordinating across teams to build the test environment; it found
+  significant performance regressions, which were fixed before they reached
+  production.
+\item Added source-level tracing, released in Firecracker 1.6: a Rust procedural
+  macro that instruments functions, and
+  \href{https://github.com/JonathanWoollett-Light/clippy-tracing}{clippy-tracing},
+  a tool that adds, removes and checks this instrumentation across the codebase.
+\item Took on maintenance of \href{https://github.com/rust-vmm}{rust-vmm} and
+  became one of its gatekeepers, who administer all of its repositories; wrote
+  its guide to handling security vulnerability disclosures, updated its CVE
+  management process and started its move to a monorepo.
+\end{itemize}
 
-I led an initiative to test Firecracker's performance in production-like
-conditions, coordinating across teams to build the test environment; it found
-significant performance regressions, which were fixed before they reached
-production. I also added source-level tracing, released in Firecracker 1.6: a
-Rust procedural macro that instruments functions, with a tool that adds, removes
-and checks this instrumentation across the codebase.
+\section*{Skills}
 
-I took on maintenance work for \href{https://github.com/rust-vmm}{rust-vmm}, the
-open-source organisation of virtualisation components shared by Firecracker,
-Cloud Hypervisor and other virtual machine monitors, and became one of its
-gatekeepers, who administer all of its repositories. In that role I wrote its
-guide to handling security vulnerability disclosures, started the initiative to
-move it to a monorepo and updated its CVE management process.
+\projectplain{Languages:}
+Rust, Python, C, C++, JavaScript, CUDA, GLSL (Vulkan compute shaders), RISC-V
+assembly, LaTeX.
+
+\projectplain{Systems and security:}
+Linux, KVM, virtualisation (virtualization), virtual machine monitors and
+hypervisors, microVMs, x86-64 CPUID on Intel and AMD, snapshot and restore, Unix
+system interfaces (epoll, eventfd), async Rust (Tokio, Axum), procedural macros,
+bare-metal RISC-V, QEMU, GDB, Spectre-class side-channel mitigations, CVE
+management, coordinated vulnerability disclosure.
+
+\projectplain{Machine learning and statistics:}
+PyTorch, CUDA Graphs, snnTorch, Tonic, spiking and recurrent neural networks,
+surrogate-gradient training, robustness evaluation, adversarial attacks,
+Bayesian optimisation (Ax, BoTorch), hyperparameter and architecture search,
+in-browser inference (Transformers.js, WebGPU), NumPy, pandas, Matplotlib,
+statsmodels, mixed-effects models, bootstrap confidence intervals, experimental
+design.
+
+\projectplain{Tooling and infrastructure:}
+Git, GitHub Actions, CI/CD, performance testing and benchmarking, tracing, AWS
+EC2, cloud GPUs, Hugging Face Hub, MongoDB, Redis, pytest, mypy, ruff, uv.
+
+\projectplain{Verification and compilers:}
+formal verification, model checking, symbolic execution, automatic
+differentiation, parsers, linters and formatters.
 
 \section*{Education}
 
-\entry{https://www.swansea.ac.uk/}{Swansea University}{September 2017 -- July 2021}{Master of Engineering in Computing (Second Class Honours, Division One)}
+\entry{https://www.york.ac.uk/physics-engineering-technology/}{University of York}{April 2025 -- 2028 (expected)}{PhD in Physics (neuromorphic computing), School of Physics, Engineering and Technology}
+
+\entry{https://www.swansea.ac.uk/}{Swansea University}{September 2017 -- July 2021}{Master of Engineering (MEng) in Computing, Upper Second-Class Honours (2:1)}
 Third-year dissertation on recognising handwritten mathematical expressions,
 using \href{https://github.com/JonathanWoollett-Light/cogent}{Cogent}, a small
 neural-network library written in Rust for the purpose. Final-year project:
@@ -164,19 +206,28 @@ operations and shared memory, and an animated
 \href{https://jonathanwoollett-light.github.io/BLAS/}{reference site} for the
 routines.
 
+\section*{Publications}
+
+\project{https://jonathanwoollettlight.dev/incc-2027-abstract.pdf}{Spiking Reset for Improved Accuracy and Robustness to Timing Perturbation}
+(2027): extended abstract for the International Neuromorphic Computing
+Conference (INCC), with Martin Trefzer.
+
+\projectplain{What Do the Reset and the Leak Do? Accuracy and Robustness to Structured Temporal Perturbation in Spiking Networks}
+(in preparation): the full paper, with Martin Trefzer.
+
 \section*{Projects}
 
-With more than 200 of my own repositories on GitHub, this is just a small selection.
-
-\project{https://jonathanwoollett-light.github.io/formal/}{formal}
-(2024--present): an experimental verifying compiler for bare-metal RISC-V,
-written in Rust. It accepts a program only if it can prove, by symbolically
-executing the machine code in parallel across every interleaving of hardware
-threads, that
-no assertion can fail and no memory access is out of bounds. Type inference is
-part of the same search, so a variable left untyped is accepted exactly when
-some typing makes the program verify. An infallible type system in a procedural
-programming language with formal verification.
+\projectplain{formal}
+(2024--present): a parallel explicit-state model checker, written in Rust, for
+the RISC-V assembly that existing compilers emit. It accepts a program only if
+it can prove, by symbolically executing it across every interleaving of
+hardware threads, that no assertion can fail and no memory access is out of
+bounds. It verifies a program as written, reporting what the search
+established, such as unreachable code and the bytes accessed, and verifies C
+compiled by GCC, including multithreaded SV-COMP tasks such as Peterson's and Dekker's locks.
+The aim is a paper showing that it outperforms existing checkers on SV-COMP
+concurrency tasks, and that an AI agent builds verified software better with it
+than with Rust, Dafny, Verus or Lean.
 
 \project{https://github.com/ci-metrics/example}{CI Metrics}
 (2023--2024): a prototype of a service, similar to Codecov, that tracks metrics
@@ -191,10 +242,11 @@ chiefly typed wrappers for epoll and eventfd and the move of several system
 calls to Rust's I/O-safety model.
 
 \project{https://byrig.uk/}{Property search}
-(2026): a rental-search page that reads floor area from floorplan images with a
-vision-language model running in the browser, and ranks listings by weighted
-preferences, including a subjective score estimated from pairwise votes with
-the Glicko-2 rating system.
+(2026): a rental-search page that reads floor area from floorplan images with
+the Moondream2 vision-language model, running in the browser through
+Transformers.js and WebGPU, and ranks listings by weighted preferences,
+including a subjective score estimated from pairwise votes with the Glicko-2
+rating system.
 
 \projectplain{Neural networks from first principles}
 (2020--2024): \href{https://github.com/JonathanWoollett-Light/rust-ad}{rust-ad},
@@ -210,11 +262,15 @@ and
 \href{https://steamcommunity.com/sharedfiles/filedetails/?id=3798403425}{Rising Tide},
 both for the Old World Blues mod; a developer on
 \href{https://steamcommunity.com/sharedfiles/filedetails/?id=2777392649}{Millennium Dawn},
-a large modern-day mod built by a volunteer team; and author of
+a large modern-day mod built by a volunteer team; and author of two Rust tools
+for the game's script files:
 \href{https://github.com/JonathanWoollett-Light/hearty}{hearty}, a formatter and
-linter for the game's script files, written in Rust. The work means coordinating
-design and releases with volunteer, often non-technical contributors, with
-little formal process.
+linter that finds 863,618 problems across five large Workshop mods in 2.6
+seconds, and \href{https://github.com/JonathanWoollett-Light/pdmc}{pdmc}, a
+library built on a lossless syntax tree that round-trips 57,427 files (1.6 GiB)
+byte-identically in 6.6 seconds. The work means coordinating design and
+releases with volunteer, often non-technical contributors, with little formal
+process.
 
 \projectplain{Genetic Draughts AI}
 (2017): my first venture into machine learning and optimisation, a C++ program
